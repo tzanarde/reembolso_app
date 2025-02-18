@@ -1,11 +1,42 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
   import DefaultInput from '../ui/DefaultInput.vue';
   import HorizontalDivider from '../ui/HorizontalDivider.vue';
   import PrimaryButton from '../ui/PrimaryButton.vue';
+  import { useRouter } from 'vue-router';
+  import axios, { AxiosError } from 'axios';
 
-  const email = ref("");
-  const password = ref("");
+  const email = ref<string>("");
+  const password = ref<string>("");
+  const router = useRouter();
+  const errorMessage = ref<string | null>(null)
+
+  const login = async (): Promise<void> => {
+    errorMessage.value = "";
+    try {
+      const response = await axios.post<{ token: string }>("http://localhost:3000/users/sign_in",
+      { user:
+        { email: email.value,
+          password: password.value }
+      },
+      { headers: { "Content-Type": "application/json" } }
+    );
+
+    if (response.status === 200) {
+      router.push("/expenses")
+    }
+
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      errorMessage.value = axiosError.message
+    }
+  }
+
+  const invalidCredentials = computed(() => {
+    console.log(errorMessage.value);
+    return errorMessage.value == "Request failed with status code 401"
+  });
+
 </script>
 
 <template>
@@ -13,11 +44,14 @@
       <h1 id="app-title">Sistema de Solicitações de Reembolsos</h1>
       <div class="main-container">
           <div class="login-container">
+            <form @submit.prevent="login">
               <div class="inputs-container">
                   <DefaultInput v-model="email" name="email" type="email" placeholder="e-mail"/>
                   <DefaultInput v-model="password" name="password" type="password" placeholder="senha"/>
               </div>
-              <PrimaryButton label="Login"/>
+              <p v-if="invalidCredentials">Credenciais inválidas</p>
+              <PrimaryButton label="Login" type="submit"/>
+            </form>
           </div>
           <HorizontalDivider />
           <div class="signup-container">

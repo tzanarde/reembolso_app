@@ -1,9 +1,16 @@
 <script setup lang="ts">
-  defineProps<{ label: string }>();
+  defineProps<{
+    label: string,
+    type?: string;
+  }>();
 </script>
 
 <template>
-  <button class="primary-button">{{ label }}</button>
+  <button
+    :type="type || 'text'"
+    class="primary-button">
+    {{ label }}
+  </button>
 </template>
 
 <style>
