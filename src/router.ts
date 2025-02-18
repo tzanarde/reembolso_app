@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Blank from "./components/Blank.vue";
+import LoginView from "./views/LoginView.vue";
 
 const routes = [
-  { path: "/", component: Blank },
+  { path: "/", component: LoginView },
 ];
 
 const router = createRouter({
