@@ -14,6 +14,6 @@ describe("HorizontalDivider.vue", () => {
     render(HorizontalDivider);
 
     const {container} = render(HorizontalDivider);
-    expect(container.querySelector(".horizontal-divider")).toHaveClass("horizontal-divider");
+    expect(container.querySelector("div")).toHaveClass("horizontal-divider");
   });
 });
