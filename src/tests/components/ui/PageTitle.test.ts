@@ -12,7 +12,7 @@ describe("PageTitle.vue", () => {
   it("must have the correct CSS class", () => {
     render(PageTitle, { props: { label: "Page Title" } });
 
-    const button = screen.getByRole("heading", { level: 1 });
-    expect(button).toHaveClass("page-title");
+    const heading = screen.getByRole("heading", { level: 1 });
+    expect(heading).toHaveClass("page-title");
   });
 });
