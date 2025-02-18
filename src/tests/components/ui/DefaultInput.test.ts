@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/vue";
 import { describe, it, expect } from "vitest";
-import DefaultInput from "../../components/ui/DefaultInput.vue";
+import DefaultInput from "../../../components/ui/DefaultInput.vue";
 
 describe("DefaultInput.vue", () => {
   it("renders the input correctly", () => {

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue";
 import { describe, it, expect, vi } from "vitest";
-import LoginForm from "../../components/forms/LoginForm.vue";
+import LoginForm from "../../../components/forms/LoginForm.vue";
 import axios from "axios";
 import { createRouter, createWebHistory } from "vue-router";
 

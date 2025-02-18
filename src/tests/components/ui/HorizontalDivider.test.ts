@@ -1,6 +1,6 @@
 import { render } from "@testing-library/vue";
 import { describe, it, expect } from "vitest";
-import HorizontalDivider from "../../components/ui/HorizontalDivider.vue";
+import HorizontalDivider from "../../../components/ui/HorizontalDivider.vue";
 
 describe("HorizontalDivider.vue", () => {
   it("renders the button with the correct label", () => {

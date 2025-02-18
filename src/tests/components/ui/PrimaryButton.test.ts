@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/vue";
 import { describe, it, expect, vi } from "vitest";
-import PrimaryButton from "../../components/ui/PrimaryButton.vue";
+import PrimaryButton from "../../../components/ui/PrimaryButton.vue";
 
 describe("PrimaryButton.vue", () => {
   it("renders the button with the correct label", () => {
