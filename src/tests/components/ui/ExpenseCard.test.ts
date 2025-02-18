@@ -31,10 +31,10 @@ describe("ExpenseCard.vue", () => {
     expect(middle_info_container?.querySelector("p")).toBeInTheDocument();
 
     expect(bottom_info_container).not.toBeNull();
-    const tags = bottom_info_container!.querySelectorAll(".tags");
+    const tags = bottom_info_container!.querySelectorAll(".tags .tag");
     expect(tags.length).toBe(2);
     tags.forEach(tag => {
-      expect(tag.querySelector(".tag")).toBeInTheDocument();
+      expect(tag).toBeInTheDocument();
     });
   });
 });
