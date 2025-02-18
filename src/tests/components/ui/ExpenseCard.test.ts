@@ -21,6 +21,8 @@ describe("ExpenseCard.vue", () => {
     expect(container.querySelector(".bottom-info")).toBeInTheDocument();
 
     const top_info_container = container.querySelector(".top-info");
+    expect(top_info_container?.querySelector(".user-image")).toBeInTheDocument();
+    expect(top_info_container?.querySelector(".employee-name")).toBeInTheDocument();
     expect(top_info_container?.querySelector(".expense-date")).toBeInTheDocument();
     expect(top_info_container?.querySelector(".expense-amount")).toBeInTheDocument();
 
