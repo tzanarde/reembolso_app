@@ -10,7 +10,10 @@
   <button
     :type="type || 'text'"
     class="small-button">
-    <img :src="image" :alt="label">
+    <img
+      :src="image || ''"
+      :alt="label"
+    >
   </button>
 </template>
 
@@ -24,6 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #d1d1d1;
 }
 
 .small-button img {
