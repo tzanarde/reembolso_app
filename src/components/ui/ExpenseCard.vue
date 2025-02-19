@@ -64,12 +64,13 @@ import { computed, ref } from 'vue';
 .expense-card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   background-color: #fff;
   padding: 10px;
-  max-height: 200px;
   border-radius: 10px;
+  height: 180px;
 }
 
 .top-info {
@@ -78,17 +79,19 @@ import { computed, ref } from 'vue';
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  min-height: 50px;
   gap: 10px;
 }
 
 .top-info-left {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
 .user-image {
-  width: 50px;
   text-align: center;
   background-color: rgb(52, 123, 189);
   min-width: 40px;
@@ -105,8 +108,6 @@ import { computed, ref } from 'vue';
 }
 
 .employee-name {
-  /* width: 40%; */
-  text-align: start;
   font-weight: 700;
   font-size: 16px;
 }
@@ -128,23 +129,21 @@ import { computed, ref } from 'vue';
   text-align: center;
   color: rgb(189, 37, 37);
   font-weight: 700;
-  padding: 0;
-  margin: 0;
-  /* margin-top: 10px; */
 }
 
 .bottom-info {
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: start;
+  justify-content: space-between;
+  align-items: end;
   width: 100%;
 }
 
 .tags {
   background-color: #fff;
   height: 40px;
-  width: 70%;
+  max-width: 70%;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -157,7 +156,7 @@ import { computed, ref } from 'vue';
   padding: 4px 8px;
   border-radius: 5px;
   font-size: 12px;
-  height: 18px;
+  height: 23px;
 }
 
 .status {
