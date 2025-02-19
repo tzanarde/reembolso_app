@@ -38,6 +38,6 @@ describe("ExpenseCard.vue", () => {
     const tags = bottom_info_container!.querySelectorAll(".tags .tag");
     expect(tags.length).toBe(2);
     tags.forEach(tag => { expect(tag).toBeInTheDocument() });
-    expect(bottom_info_container!.querySelector(".pending-status")).toBeInTheDocument();
+    expect(bottom_info_container!.querySelector(".status")).toBeInTheDocument();
   });
 });
