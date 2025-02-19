@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    import LoginForm from '../components/forms/LoginForm.vue';
+    import LoginPage from '../components/pages/LoginPage.vue';
 </script>
 
 <template>
-  <LoginForm />
+  <LoginPage />
 </template>
