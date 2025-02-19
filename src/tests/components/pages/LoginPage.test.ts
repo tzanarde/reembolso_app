@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue";
 import { describe, it, expect, vi } from "vitest";
-import LoginForm from "../../../components/forms/LoginForm.vue";
+import LoginPage from "../../../components/pages/LoginPage.vue";
 import axios from "axios";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -11,9 +11,9 @@ const router = createRouter({
   routes: [{ path: "/expenses", component: { template: "<div>Expenses</div>" } }],
 });
 
-describe("LoginForm.vue - UI", () => {
+describe("LoginPage.vue - UI", () => {
   it("renders inputs and buttons correctly", () => {
-    render(LoginForm);
+    render(LoginPage);
 
     expect(screen.getByPlaceholderText("e-mail")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("senha")).toBeInTheDocument();
@@ -22,7 +22,7 @@ describe("LoginForm.vue - UI", () => {
   });
 
   it("allow user to fill email and password fields", async () => {
-    render(LoginForm);
+    render(LoginPage);
 
     const emailInput = screen.getByPlaceholderText("e-mail");
     const passwordInput = screen.getByPlaceholderText("senha");
@@ -35,11 +35,11 @@ describe("LoginForm.vue - UI", () => {
   });
 });
 
-describe("LoginForm.vue - Validation", () => {
+describe("LoginPage.vue - Validation", () => {
   it("shows error message when logins fails", async () => {
     (axios.post as vi.Mock).mockRejectedValueOnce(new Error("Request failed with status code 401"));
 
-    render(LoginForm);
+    render(LoginPage);
 
     await fireEvent.update(screen.getByPlaceholderText("e-mail"), "teste@email.com");
     await fireEvent.update(screen.getByPlaceholderText("senha"), "password");
@@ -51,14 +51,14 @@ describe("LoginForm.vue - Validation", () => {
   });
 });
 
-describe("LoginForm.vue - Login and Redirect", () => {
+describe("LoginPage.vue - Login and Redirect", () => {
   it("redirects to /expenses when the login is successfull", async () => {
     (axios.post as vi.Mock).mockResolvedValueOnce({
       status: 200,
       data: { token: "fake-token" },
     });
 
-    render(LoginForm, {
+    render(LoginPage, {
       global: {
         plugins: [router],
         stubs: { RouterLink: true },

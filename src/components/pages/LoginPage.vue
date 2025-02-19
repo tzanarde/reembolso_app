@@ -42,7 +42,7 @@
 <template>
   <section class="main-section">
       <h1 id="app-title">Sistema de Solicitações de Reembolsos</h1>
-      <div class="main-container">
+      <div class="login-main-container">
           <div class="login-container">
             <form @submit.prevent="login">
               <div class="inputs-container">
@@ -101,7 +101,7 @@
   gap: 10px;
 }
 
-.main-container {
+.login-main-container {
   background-color: rgb(218, 218, 218);
   padding: 50px 20px;
   width: 250px;
