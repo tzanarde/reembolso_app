@@ -11,7 +11,8 @@ describe("ExpenseCard.vue", () => {
         date: "12/fev",
         amount: "R$ 100,00",
         description: "Expense Description Text",
-        tags: ["tag 1", "tag 2"]
+        tags: ["tag 1", "tag 2"],
+        status: "P"
       }
     });
 
@@ -23,18 +24,20 @@ describe("ExpenseCard.vue", () => {
     expect(middle_info_container).toBeInTheDocument();
     expect(bottom_info_container).toBeInTheDocument();
 
-    expect(top_info_container?.querySelector(".user-image")).toBeInTheDocument();
-    expect(top_info_container?.querySelector(".employee-name")).toBeInTheDocument();
-    expect(top_info_container?.querySelector(".expense-date")).toBeInTheDocument();
-    expect(top_info_container?.querySelector(".expense-amount")).toBeInTheDocument();
+    const top_info_left_container = top_info_container!.querySelector(".top-info-left");
+    expect(top_info_left_container?.querySelector(".user-image")).toBeInTheDocument();
+    expect(top_info_left_container?.querySelector(".employee-name")).toBeInTheDocument();
+    const top_info_right_container = top_info_container!.querySelector(".top-info-right");
+    expect(top_info_right_container?.querySelector(".expense-date")).toBeInTheDocument();
+    expect(top_info_right_container?.querySelector(".expense-amount")).toBeInTheDocument();
 
     expect(middle_info_container?.querySelector("p")).toBeInTheDocument();
 
     expect(bottom_info_container).not.toBeNull();
+    expect(bottom_info_container!.querySelector(".tags")).toBeInTheDocument();
     const tags = bottom_info_container!.querySelectorAll(".tags .tag");
     expect(tags.length).toBe(2);
-    tags.forEach(tag => {
-      expect(tag).toBeInTheDocument();
-    });
+    tags.forEach(tag => { expect(tag).toBeInTheDocument() });
+    expect(bottom_info_container!.querySelector(".pending-status")).toBeInTheDocument();
   });
 });
