@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, ref } from 'vue';
+  import { ref, watch } from 'vue';
   import DefaultInput from '../ui/DefaultInput.vue';
   import HorizontalDivider from '../ui/HorizontalDivider.vue';
   import PrimaryButton from '../ui/PrimaryButton.vue';
@@ -23,6 +23,7 @@
     );
 
     if (response.status === 200) {
+      sessionStorage.setItem("token", response.data.token);
       router.push("/expenses")
     }
 
@@ -32,9 +33,10 @@
     }
   }
 
-  const invalidCredentials = computed(() => {
-    console.log(errorMessage.value);
-    return errorMessage.value == "Request failed with status code 401"
+  const invalidCredentials = ref(false);
+
+  watch(errorMessage, (newValue) => {
+    invalidCredentials.value = newValue === "Request failed with status code 401";
   });
 
 </script>
