@@ -4,16 +4,18 @@
     type?: string,
     image: string;
   }>();
+
+  const emit = defineEmits(["eventClick"]);
 </script>
 
 <template>
   <button
     :type="type || 'text'"
-    class="small-button">
+    class="small-button"
+    @click="emit('eventClick')">
     <img
       :src="image || ''"
-      :alt="label"
-    >
+      :alt="label">
   </button>
 </template>
 
@@ -21,8 +23,8 @@
 .small-button {
   background-color: #fff;
   color: #000;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
