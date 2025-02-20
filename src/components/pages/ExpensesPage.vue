@@ -73,6 +73,11 @@
     onMounted(() => {
         getExpenses();
     });
+
+    const goToCardDetails = (expense_id: number) => {
+        console.log(expense_id);
+        router.push(`/expense/${expense_id}`);
+    }
 </script>
 
 <template>
@@ -93,13 +98,15 @@
                 <ExpenseCard
                     v-for="(expense, index) in expenses"
                     :key="index"
-                    :user_image="expense.user_image"
-                    :user_name="expense.user_name"
+                    :user_image="''"
+                    :user_name="'user_name'"
                     :date="expense.date"
                     :amount="expense.amount"
                     :description="expense.description"
                     :status="expense.status"
-                    :tags="expense.tags"
+                    :tags="['tag']"
+                    :expense_id="expense.id"
+                    @cardClick="goToCardDetails"
                 />
             </div>
         </section>

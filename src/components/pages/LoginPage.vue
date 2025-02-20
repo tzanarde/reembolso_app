@@ -65,7 +65,7 @@
 </template>
 
 <style>
-#main-section {
+.main-section {
   display: flex;
   flex-direction: column;
   justify-content: center;

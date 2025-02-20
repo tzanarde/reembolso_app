@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
+  const emit = defineEmits(["cardClick"]);
+
+  const cardClick = () => {
+      emit("cardClick", props.expense_id);
+  };
+
   const props = defineProps<{
     user_image: string,
     user_name: string,
@@ -8,7 +14,8 @@ import { computed, ref } from 'vue';
     amount: string,
     description: string,
     tags: string[],
-    status: string
+    status: string,
+    expense_id: number
   }>();
 
   const statusClass = computed(() => {
@@ -33,7 +40,7 @@ import { computed, ref } from 'vue';
 </script>
 
 <template>
-  <div class="expense-card">
+  <div class="expense-card" @click="cardClick">
     <div class="top-info">
       <div class="top-info-left">
         <div class="user-image">
