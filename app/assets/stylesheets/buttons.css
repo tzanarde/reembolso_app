@@ -1,0 +1,53 @@
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 44px;
+    padding: 14px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+/* Tipos de botão */
+.btn-primary {
+    background-color: var(--primary-button-color);
+    color: var(--regular-text-color);
+}
+.btn-primary:hover {
+    background-color: var(--primary-button-hover-color);
+}
+
+.btn-cancel {
+    background-color: var(--cancel-button-color);
+    color: var(--regular-text-color);
+}
+.btn-cancel:hover {
+    background-color: var(--cancel-button-color);
+}
+
+.btn-confirm {
+    background-color: var(--confirm-button-color);
+    color: var(--regular-text-color);
+}
+.btn-confirm:hover {
+    background-color: var(--confirm-button-color);
+}
+
+/* Tamanhos de botão */
+.btn-full-width {
+    width: 100%;
+}
+
+.btn-half-width {
+    width: 50%;
+}
+
+.btn-rounded {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

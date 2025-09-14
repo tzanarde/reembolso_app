@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-border-color);
+    padding: 20px;
+}
+
+/* Tipos de container */
+.container-primary {
+    background-color: var(--primary-container-color);
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Tamanhos de container */
+.container-center-sm {
+    width: 80vw;
+    height: 50vh;
+    max-width: 500px;
+}
+
+.container-center-md {
+    width: 80vw;
+    height: 65vh;
+    max-width: 500px;
+}
+
+.container-center-lg {
+    width: 80vw;
+    height: 80vh;
+    max-width: 500px;
+}
