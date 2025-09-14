@@ -1,31 +1,64 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  titles:
+    app: "Refund Request System"
+    sign_up: "Sign Up"
+    forgot_password: "Forgot Your Password?"
+    pending_requests: "Pending Requests"
+    my_pending_requests: "My Pending Requests"
+    refound_request: "Refund Request"
+    my_refound_request: "My Refund Request"
+    add_refound_request: "New Refund Request"
+    edit_refound_request: "Edit Refund Request"
+    request_history: "Request History"
+    my_request_history: "My Request History"
+  buttons:
+    confirm: "Confirm"
+    cancel: "Cancel"
+    login: "Login"
+    send_instructions: "Send Instructions"
+    forgot_password: "Forgot Your Password?"
+    sign_up: "Sign Up"
+    add_expense: "+"
+    deny: "Deny"
+    approve: "Approve"
+    remove: "Remove"
+    edit: "Edit"
+    request: "Request"
+    save: "Save"
+    ok: "OK"
+    no: "No"
+    yes: "Yes"
+    filter: "Filter"
+  messages:
+    refound_request_approved: "The refund request has been approved!"
+    refound_request_remove_confirmation: "Are you sure you want to remove the refund request?"
+    refound_request_sent: "Your refund request has been sent for approval to your manager!"
+    refound_request_edited: "Your refund request has been successfully edited!"
+    refound_request_denied: "The refund request has been denied!"
+    refound_request_removed: "Your refund request has been successfully removed!"
+    user_register_request_sent_message: "Your registration request has been sent for approval to the selected manager!"
+    user_register_request_sent_email: "You will receive an email after your approval."
+    user_edited: "Your user has been successfully updated!"
+  fields:
+    user:
+      full_name: "full name"
+      email: "email"
+      password: "password"
+      password_confirmation: "confirm password"
+      choose_user_type: "select user type"
+      choose_manager: "select your manager"
+    filters:
+      fiter: "filter"
+      filter_by: "Filter by"
+      period: "period"
+      employee: "employee"
+      tags: "tags"
+      amount: "Amount"
+      classify: "Sort by"
+    expenses:
+      amount_spent: "amount spent"
+      date: "date"
+      description: "description"
+      tax_receipt: "Tax Receipt"
+      receipt: "Receipt"
+      tags: "tags"
