@@ -114,6 +114,11 @@ GEM
     drb (2.2.3)
     erb (5.0.2)
     erubi (1.13.1)
+    factory_bot (6.5.5)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.1)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     haml (6.3.0)
@@ -335,6 +340,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  factory_bot_rails
   haml-rails
   importmap-rails
   jbuilder
