@@ -3,8 +3,12 @@
 
     --primary-container-color: #E9ECEF;      /* Cor de fundo primária dos containeres */
     --secondary-container-color: #ff00b3;    /* Cor de fundo secundária dos containeres */
+    --tertiary-container-color: #fff;        /* Cor de fundo secundária dos containeres */
 
-    --title-text-color: #4DABF7;             /* Cor dos títulos */
+    --box-container-color: #FFEC99;          /* Cor de fundo dos boxes containeres */
+
+    --main-title-text-color: #4DABF7;        /* Cor dos títulos principais */
+    --title-text-color: #1b1b1b;             /* Cor dos títulos de telas */
     --regular-text-color: #303030;           /* Cor dos textos */
     --alert-text-color: #f06e6e;             /* Cor dos textos de alerta*/
     --placeholder-text-color: #727272;       /* Cor dos textos de placeholder*/
@@ -17,4 +21,7 @@
     --confirm-button-hover-color: #49aa5a;   /* Cor do hover dos botões de confirmar */
 
     --primary-border-color: #d4d4d4;         /* Cor primária das bordas */
+
+    --menu-container-color: #b8b8b8;         /* Cor de fundo do menu */
+    --menu-container-hover-color: #838383;   /* Cor do hover do fundo do menu */
 }

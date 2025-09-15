@@ -10,6 +10,7 @@
     border: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
+    justify-content: center;
 }
 
 /* Tipos de botão */
@@ -50,4 +51,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+form.button_to {
+    width: 100%;
 }
