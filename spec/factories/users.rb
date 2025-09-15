@@ -8,14 +8,14 @@ FactoryBot.define do
     trait :manager do
       sequence(:email) { |n| "manager#{n}@email.com" }
       name { "Manager Name" }
-      role { "Manager" }
+      role { "M" }
       manager_user_id { nil }
     end
 
     trait :employee do
       sequence(:email) { |n| "employee#{n}@email.com" }
       name { "Employee Name" }
-      role { "Employee" }
+      role { "E" }
       manager_user_id { nil }
     end
   end
