@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const managerField = document.getElementById("manager");
 
     roleSelect.addEventListener("change", () => {
-        if (roleSelect.value === "M") {
-            managerField.style.display = "none";
-        } else {
+        if (roleSelect.value === "E") {
             managerField.style.display = "block";
+        } else {
+            managerField.style.display = "none";
         }
+
+        managerField.selectedIndex = 0;
     });
 });
