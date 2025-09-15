@@ -28,7 +28,7 @@ RSpec.describe "shared/_modal_question.html.haml", type: :view do
     end
 
     it "renders with the correct structure" do
-      expect(rendered).to have_css("div.main")
+      expect(rendered).to have_css("div.main-center")
     end
   end
 end
