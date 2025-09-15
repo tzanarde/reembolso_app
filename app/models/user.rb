@@ -13,10 +13,17 @@ class User < ApplicationRecord
                         dependent: :nullify
 
   # Validations
-  validates :name, length: { maximum: 50 }
-  validates :email, length: { maximum: 60 }
-  validates :role, length: { maximum: 1 }
-  validates :role, inclusion: { in: %w[M E] }
+  validates :name, length: { maximum: 50 },
+                   presence: true
+
+  validates :email, length: { maximum: 60 },
+                    presence: true
+
+  validates :role, length: { maximum: 1 },
+                   inclusion: { in: %w[M E] },
+                   presence: true
+
+  validates :active, presence: true
 
   # Scopes
   scope :managers, -> { where(role: 'M') }

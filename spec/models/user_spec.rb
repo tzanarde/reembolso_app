@@ -18,5 +18,22 @@ RSpec.describe User, type: :model do
     context 'for the fields content' do
       it { is_expected.to validate_inclusion_of(:role).in_array(%w[M E]) }
     end
+
+    context 'for the fields presence' do
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_presence_of(:email) }
+      it { is_expected.to validate_presence_of(:role) }
+      it { is_expected.to validate_presence_of(:active) }
+    end
+  end
+
+  describe 'scopes' do
+    let!(:manager) { create(:user, :manager) }
+    let!(:employee) { create(:user, :employee) }
+
+    it 'returns only managers' do
+      expect(User.managers).to include(manager)
+      expect(User.managers).not_to include(employee)
+    end
   end
 end
