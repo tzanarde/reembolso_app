@@ -5,8 +5,7 @@ RSpec.describe "shared/_modal_confirm.html.haml", type: :view do
     before do
       render partial: "shared/modal_confirm", locals: { message_text: "Mensagem",
                                                         button_id: "test-modal",
-                                                        button_text: "Confirmar",
-                                                        button_route: "/test-route" }
+                                                        button_text: "Confirmar" }
     end
 
     it "renders with the correct text" do
@@ -14,14 +13,13 @@ RSpec.describe "shared/_modal_confirm.html.haml", type: :view do
     end
 
     it "renders with a confirm button" do
-      expect(rendered).to have_selector("a", text: "Confirmar", exact_text: true)
-      expect(rendered).to have_css("a#test-modal")
-      expect(rendered).to have_css("a.btn.btn-primary.btn-full-width")
-      expect(rendered).to have_link(href: "/test-route")
+      expect(rendered).to have_selector("button", text: "Confirmar", exact_text: true)
+      expect(rendered).to have_css("button#test-modal")
+      expect(rendered).to have_css("button.btn.btn-confirm.btn-full-width")
     end
 
     it "renders with the correct structure" do
-      expect(rendered).to have_css("div.main")
+      expect(rendered).to have_css("div.modal")
     end
   end
 end
