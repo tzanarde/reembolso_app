@@ -12,6 +12,12 @@ class User < ApplicationRecord
                         foreign_key: "manager_user_id",
                         dependent: :nullify
 
+  # Validations
+  validates :name, length: { maximum: 50 }
+  validates :email, length: { maximum: 60 }
+  validates :role, length: { maximum: 1 }
+  validates :role, inclusion: { in: %w[M E] }
+
   # Scopes
   scope :managers, -> { where(role: 'M') }
 end
