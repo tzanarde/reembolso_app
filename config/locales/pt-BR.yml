@@ -81,3 +81,9 @@ pt-BR:
     filter: "Filtrar"
     search: "Buscar"
     back: "Voltar"
+  errors:
+    forms:
+      user_sign_up:
+        name:
+          blank: "Nome é um campo obrigatório e está vazio"
+          too_long: "O nome é muito grande. Máximo de 50 caracteres"
