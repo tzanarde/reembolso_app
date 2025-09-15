@@ -1,0 +1,23 @@
+#menu-container
+  #menu
+    = link_to root_path, id: "home-item" do
+      .menu-item
+        = image_tag "home.png", alt: t("images_alt.home")
+
+    .vertical-divider
+
+    = link_to root_path, id: "pending-expenses-item" do
+      .menu-item
+        = image_tag "pending_expenses.png", alt: t("images_alt.pending_expenses")
+
+    .vertical-divider
+
+    = link_to root_path, id: "expenses-history-item" do
+      .menu-item
+        = image_tag "expenses_history.png", alt: t("images_alt.expenses_history")
+
+    .vertical-divider
+
+    = link_to '/user_menu', id: "user-item" do
+      .menu-item
+        = image_tag "user.png", alt: t("images_alt.user")
