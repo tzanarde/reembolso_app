@@ -1,0 +1,13 @@
+.main-top
+
+  %h2.text-primary= t("titles.add_refound_request")
+
+  .container.container-primary.container-full-screen
+    = form_with(model: @expense, local: true, html: { class: "container-form" }) do |f|
+      = render "devise/shared/error_messages", resource: @expense
+      = f.number_field :amount, step: 0.01, min: 0, autofocus: true, placeholder: t("fields.expenses.amount_spent"), class: "text-field", id: "amount"
+      = f.date_field :date, placeholder: t("fields.expenses.date"), class: "text-field date-field", id: "date"
+      = f.text_field :tags, placeholder: t("fields.expenses.tags"), value: @expense.tags.map(&:name).join(', '), class: "text-field", id: "tags"
+      = f.text_field :location, placeholder: t("fields.expenses.location"), class: "text-field", id: "location"
+      = f.text_area :description, rows: 10, placeholder: t("fields.expenses.description"), class: "text-area", id: "description"
+      = f.submit t("buttons.request"), class: "btn btn-primary btn-full-width", id: "request_expense"
