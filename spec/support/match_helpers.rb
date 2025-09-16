@@ -36,4 +36,12 @@ module MatchHelpers extend RSpec::SharedContext
     expect(user.password_confirmation).to eq(password_confirmation)
     expect(user.role).to eq(user_role)
   end
+
+  def fill_form_new_expense(description: nil, date: nil, amount: nil, location: nil, tags: nil)
+    fill_in "description", with: description, id: "description" unless description.nil?
+    fill_in "date", with: date unless date.nil?
+    fill_in "amount", with: amount unless amount.nil?
+    fill_in "location", with: location unless location.nil?
+    fill_in "tags", with: tags unless tags.nil?
+  end
 end
