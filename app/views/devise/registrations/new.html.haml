@@ -1,26 +1,17 @@
-%h2 Sign up
-
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em= "#{@minimum_password_length} characters minimum)"
-      %br/
-    = f.password_field :password, autocomplete: "new-password"
-
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-
-  .actions
-    = f.submit "Sign up"
-
-= render "devise/shared/links"
+.main-center
+  %h2.text-primary= t("titles.sign_up")
+  
+  .container.container-primary.container-center-md
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "container-form" }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      = f.text_field :name, autofocus: true, placeholder: t("fields.user.full_name"), class: "text-field"
+      .divider-sm
+      = f.email_field :email, autocomplete: "email", placeholder: t("fields.user.email"), class: "text-field"
+      = f.password_field :password, autocomplete: "new-password", placeholder: t("fields.user.password"), class: "text-field"
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: t("fields.user.password_confirmation"), class: "text-field"
+      .divider-sm
+      = f.select :role, options_for_select([["Funcionário", "E"],["Gestor", "M"]], selected: resource.role), { include_blank: t("fields.user.choose_user_type") }, class: "text-field", id: "role"
+      = f.collection_select :manager_user_id, User.managers, :id, :name, { include_blank: t("fields.user.choose_manager") }, class: "text-field", id: "manager", style: "display: none;"
+      = f.submit t("buttons.sign_up"), class: "btn btn-primary btn-full-width", id: "sign_up"
+      .divider-md
+      = render "devise/shared/links"
