@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "pages#home"
   
+  resources :expenses
+
   get 'pages/home'
   get 'user_menu', to: 'pages#user_menu'
 
