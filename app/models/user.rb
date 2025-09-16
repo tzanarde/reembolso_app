@@ -25,6 +25,9 @@ class User < ApplicationRecord
 
   validates :active, presence: true
 
+  validates :manager_user_id, presence: true, if: -> { role == "E" }
+  validates :manager_user_id, absence: true, if: -> { role == "M" }
+
   # Scopes
   scope :managers, -> { where(role: 'M') }
 end

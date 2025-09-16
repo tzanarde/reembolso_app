@@ -25,11 +25,47 @@ RSpec.describe User, type: :model do
       it { is_expected.to validate_presence_of(:role) }
       it { is_expected.to validate_presence_of(:active) }
     end
+
+    context 'for the role field' do  
+      context 'for invalid assignments' do
+        context 'for a manager' do
+          let!(:employee) { build(:user, :employee, manager_user_id: nil) }
+          it "requires manager for employees" do
+            expect(employee.valid?).to be false
+          end
+        end
+
+        context 'for an employee' do
+          let!(:existing_manager) { create(:user, :manager) }
+          let!(:testing_manager) { build(:user, :manager, manager_user_id: existing_manager.id) }
+          it 'does not allow a manager for a manager' do
+            expect(testing_manager.valid?).to be false
+          end
+        end
+      end
+
+      context 'for valid assignments' do
+        context 'for a manager' do
+          let!(:manager) { create(:user, :manager) }
+          let!(:employee) { build(:user, :employee, manager_user_id: manager.id) }
+          it 'allows an employee with a manager' do
+            expect(employee.valid?).to be true
+          end
+        end
+
+        context 'for an employee' do
+          let!(:manager) { build(:user, :manager) }
+          it 'allows a manager without a manager' do
+            expect(manager.valid?).to be true
+          end
+        end
+      end
+    end
   end
 
   describe 'scopes' do
     let!(:manager) { create(:user, :manager) }
-    let!(:employee) { create(:user, :employee) }
+    let!(:employee) { create(:user, :employee, manager_user_id: manager.id) }
 
     it 'returns only managers' do
       expect(User.managers).to include(manager)

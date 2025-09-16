@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_15_193310) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_15_214043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_15_193310) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["manager_user_id"], name: "index_users_on_manager_user_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.check_constraint "role::text = 'E'::text AND manager_user_id IS NOT NULL OR role::text = 'M'::text AND manager_user_id IS NULL", name: "role_manager_check"
   end
 
   add_foreign_key "users", "users", column: "manager_user_id"
