@@ -1,45 +1,22 @@
-%h2
-  Edit
-  = resource_name.to_s.humanize
+.main-center
+  %h2.text-primary= t("titles.edit_user")
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div Currently waiting confirmation for: 
-      = resource.unconfirmed_email
-
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em= "#{@minimum_password_length} characters minimum"
-
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-
-  .field
-    = f.label :current_password
-      %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-
-  .actions
-    = f.submit "Update"
-
-%h3 Cancel my account
-
-%div Unhappy?
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete
-
-= link_to "Back", :back
+  .container.container-primary.container-center-lg
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "container-form" }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      = f.text_field :name, autofocus: true, placeholder: t("fields.user.full_name"), class: "text-field"
+      .divider-sm
+      = f.email_field :email, autocomplete: "email", placeholder: t("fields.user.email"), class: "text-field" 
+      .divider-sm
+      = f.password_field :password, autocomplete: "new-password", placeholder: t("fields.user.password"), class: "text-field"
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: t("fields.user.password_confirmation"), class: "text-field"        
+      = f.password_field :current_password, autocomplete: "current-password", placeholder: t("fields.user.current_password"), class: "text-field"
+      .divider-sm
+      = f.select :role, options_for_select([["Funcionário", "E"],["Gestor", "M"]], selected: resource.role), { include_blank: t("fields.user.choose_user_type") }, class: "text-field", id: "role"
+      - hidden_style = Rails.env.test? ? "" : "display: none;"
+      = f.collection_select :manager_user_id, User.managers, :id, :name, { include_blank: t("fields.user.choose_manager") }, class: "text-field", id: "manager", style: hidden_style
+      = f.submit t("buttons.save_edit"), class: "btn btn-primary btn-full-width", id: "edit_user"
+    .divider-md
+    = button_to t("buttons.delete_user"), registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary btn-full-width", id: "delete_user"
+    .divider-md
+    = link_to "<-", :back
