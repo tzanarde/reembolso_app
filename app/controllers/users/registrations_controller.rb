@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super do |resource|
       if resource.persisted?
-        flash[:show_modal] = true
+        flash[:show_modal_user] = true
         flash[:modal_message] = t("messages.user_register_request_sent_message")
       end
     end
@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     super do |resource|
       if resource.persisted?
-        flash[:show_modal] = true
+        flash[:show_modal_user] = true
         flash[:modal_message] = t("messages.user_edited")
       end
     end
