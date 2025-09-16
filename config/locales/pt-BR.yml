@@ -17,6 +17,7 @@ pt-BR:
     all_pending_expenses: "Pendentes"
     todays_pending_expenses: "Hoje"
     week_pending_expenses: "Semana"
+    welcome: "Bem vindo(a), %{name}!"
   buttons:
     confirm: "Confirmar"
     cancel: "Cancelar"
@@ -86,4 +87,18 @@ pt-BR:
       user_sign_up:
         name:
           blank: "Nome é um campo obrigatório e está vazio"
-          too_long: "O nome é muito grande. Máximo de 50 caracteres"
+          too_long: "O nome informado é muito grande. Máximo de 50 caracteres"
+        email:
+          blank: "E-mail é um campo obrigatório e está vazio"
+          too_long: "O e-mail informado é muito grande. Máximo de 60 caracteres"
+        password:
+          blank: "Senha é um campo obrigatório e está vazio"
+          not_match: "As senhas informadas não são iguais"
+          too_short: "A senha informada é muito curta, precisa ter pelo menos 6 caracteres"
+          current_blank: "É preciso informar a senha atual para editar o usuário e ela não foi informada"
+        role:
+          blank: "Tipo de usuário é um campo obrigatório e está vazio"
+        manager_user_id:
+          blank: "Gestor é um campo obrigatório quando o tipo de usuário é Funcionário, e está vazio"
+      user_sign_in:
+        invalid_credentials: "E-mail ou senha inválidos"

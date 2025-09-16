@@ -1,8 +1,8 @@
 en:
   titles:
-    app: "Refund Requests System"
+    app: "Refund Request System"
     sign_up: "Sign Up"
-    forgot_password: "Forgot Password?"
+    forgot_password: "Forgot Your Password?"
     pending_expenses: "Pending Requests"
     my_pending_expenses: "My Pending Requests"
     refound_request: "Refund Request"
@@ -17,13 +17,14 @@ en:
     all_pending_expenses: "Pending"
     todays_pending_expenses: "Today"
     week_pending_expenses: "Week"
+    welcome: "Welcome, %{name}!"
   buttons:
     confirm: "Confirm"
     cancel: "Cancel"
     login: "Login"
     logout: "Logout"
     send_instructions: "Send Instructions"
-    forgot_password: "Forgot Password?"
+    forgot_password: "Forgot Your Password?"
     save_edit: "Save Edit"
     delete_user: "Delete User"
     sign_up: "Sign Up"
@@ -42,12 +43,12 @@ en:
   messages:
     refound_request_approved: "The refund request has been approved!"
     refound_request_remove_confirmation: "Are you sure you want to remove the refund request?"
-    refound_request_sent: "Your refund request has been sent for approval by your manager!"
+    refound_request_sent: "Your refund request has been sent for manager approval!"
     refound_request_edited: "Your refund request has been successfully edited!"
     refound_request_denied: "The refund request has been denied!"
     refound_request_removed: "Your refund request has been successfully removed!"
-    user_register_request_sent_message: "Your registration request has been sent for approval by the selected manager!"
-    user_register_request_sent_email: "You will receive an email after your approval."
+    user_register_request_sent_message: "Your registration request has been sent for manager approval!"
+    user_register_request_sent_email: "You will receive an email once your request is approved."
     user_edited: "Your user has been successfully updated!"
   fields:
     user:
@@ -59,7 +60,7 @@ en:
       choose_user_type: "select user type"
       choose_manager: "select your manager"
     filters:
-      fiter: "filter"
+      filter: "filter"
       filter_by: "Filter by"
       period: "period"
       employee: "employee"
@@ -81,3 +82,23 @@ en:
     filter: "Filter"
     search: "Search"
     back: "Back"
+  errors:
+    forms:
+      user_sign_up:
+        name:
+          blank: "Name is a required field and cannot be empty"
+          too_long: "The name entered is too long. Maximum 50 characters"
+        email:
+          blank: "Email is a required field and cannot be empty"
+          too_long: "The email entered is too long. Maximum 60 characters"
+        password:
+          blank: "Password is a required field and cannot be empty"
+          not_match: "Passwords do not match"
+          too_short: "The password is too short, it must be at least 6 characters"
+          current_blank: "Current password must be provided to edit the user and it was not entered"
+        role:
+          blank: "User type is a required field and cannot be empty"
+        manager_user_id:
+          blank: "Manager is required when the user type is Employee and cannot be empty"
+      user_sign_in:
+        invalid_credentials: "Invalid email or password"
