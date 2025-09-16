@@ -17,7 +17,7 @@
 .container-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 15px;
     width: 100%;
@@ -41,6 +41,12 @@
     width: 80vw;
     height: 80vh;
     max-width: 500px;
+}
+
+.container-full-screen {
+    height: 80vh;
+    width: 100%;
+    max-width: 800px;
 }
 
 .regular-container {
