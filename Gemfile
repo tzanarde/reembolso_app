@@ -56,6 +56,9 @@ group :development, :test do
   gem "haml-rails"
   gem "factory_bot_rails"
   gem "rspec-rails", "~> 6.1"
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do
