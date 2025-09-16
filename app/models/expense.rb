@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Expense < ApplicationRecord
+  before_validation :set_default_status, on: :create
+
   # Relationships
   belongs_to :user
 
@@ -96,5 +98,11 @@ class Expense < ApplicationRecord
 
     tags_to_remove.each { |tag| tags.destroy(tag) }
     tags_to_add.each { |tag| tags << Tag.find_or_create_by(description: tag) }
+  end
+
+  private
+
+  def set_default_status
+    self.status = 'P'
   end
 end

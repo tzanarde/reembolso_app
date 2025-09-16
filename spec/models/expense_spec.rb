@@ -3,6 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
+  describe "initializers" do
+    let!(:manager) { create(:user, :manager) }
+    let!(:employee) { create(:user, :employee, manager_user_id: manager.id) }
+    let!(:expense) { create(:expense, :approved, user: employee) }
+    it 'creates an expense with the default status values' do
+      expect(expense.status).to include('P')
+    end
+  end
+
   describe "associations" do
     it { should belong_to(:user) }
     it { should have_and_belong_to_many(:tags) }
@@ -14,14 +23,14 @@ RSpec.describe Expense, type: :model do
     context 'for the fields length' do
       it { is_expected.to validate_length_of(:description).is_at_most(80) }
       it { is_expected.to validate_length_of(:location).is_at_most(50) }
-      it { is_expected.to validate_length_of(:status).is_at_most(1) }
+      it { is_expected.to validate_length_of(:status).is_at_most(1).on(:update) }
     end
     context 'for the fields presence' do
       it { should validate_presence_of :description }
       it { should validate_presence_of :date }
       it { should validate_presence_of :amount }
       it { should validate_presence_of :location }
-      it { should validate_presence_of :status }
+      it { should validate_presence_of(:status).on(:update) }
     end
   end
 
