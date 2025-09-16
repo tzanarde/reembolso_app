@@ -1,0 +1,15 @@
+-# User sign up modal
+- if flash[:show_modal_user]
+  .modal-backdrop#modal-backdrop
+  = render partial: "shared/modal_confirm",
+           locals: { message_text: flash[:modal_message],
+                     button_text: t("buttons.confirm"),
+                     button_id: "confirm_button" }
+
+-# User forgot password modal
+- if flash[:show_modal_forgot_password]
+  .modal-backdrop#modal-backdrop
+  = render partial: "shared/modal_confirm",
+           locals: { message_text: flash[:modal_message],
+                     button_text: t("buttons.confirm"),
+                     button_id: "confirm_button" }
