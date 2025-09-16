@@ -13,3 +13,11 @@
            locals: { message_text: flash[:modal_message],
                      button_text: t("buttons.confirm"),
                      button_id: "confirm_button" }
+
+-# Expense created modal
+- if flash[:show_modal_expense_created]
+  .modal-backdrop#modal-backdrop
+  = render partial: "shared/modal_confirm",
+           locals: { message_text: flash[:modal_message],
+                     button_text: t("buttons.confirm"),
+                     button_id: "confirm_button" }
