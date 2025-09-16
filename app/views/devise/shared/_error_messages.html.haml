@@ -1,9 +1,13 @@
 - if resource.present? and resource.errors.any?
+  - message_text = error_message(resource) if resource.class.name == 'User'
+  - message_text = expense_error_message(resource) if resource.class.name == 'Expense'
+  
   .modal-backdrop#modal-backdrop
   = render partial: "shared/modal_confirm",
-           locals: { message_text: error_message(resource),
+           locals: { message_text: message_text,
                      button_text: t("buttons.confirm"),
                      button_id: "confirm_button" }
+
 - else
 
   - if flash[:alert] == t('devise.failure.unauthenticated')

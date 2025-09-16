@@ -2,24 +2,51 @@ require "rails_helper"
 
 RSpec.describe "devise/shared/_error_messages.html.haml", type: :view do
   context 'for the resource errors' do
-    context 'when there is an error' do
-      let!(:user) { build(:user, :manager, email: nil) }
-      it "renders the modal" do
-        user.valid?
+    context 'for a user error' do
+      context 'when there is an error' do
+        let!(:user) { build(:user, :manager, email: nil) }
+        it "renders the modal" do
+          user.valid?
 
-        render "devise/shared/error_messages", resource: user
+          render "devise/shared/error_messages", resource: user
 
-        expect(rendered).to include(I18n.t("errors.forms.user_sign_up.email.blank"))
+          expect(rendered).to include(I18n.t("errors.forms.user_sign_up.email.blank"))
+        end
+      end
+      context 'when there is no error' do
+        let!(:user) { build(:user, :manager) }
+        it "does not render the modal" do
+          user.valid?
+
+          render "devise/shared/error_messages", resource: user
+
+          expect(rendered).to be_empty
+        end
       end
     end
-    context 'when there is no error' do
-      let!(:user) { build(:user, :manager) }
-      it "does not render the modal" do
-        user.valid?
 
-        render "devise/shared/error_messages", resource: user
+    context 'for an expense error' do
+      let!(:manager) { build(:user, :manager) }
+      let!(:employee) { build(:user, :employee, manager_user_id: manager.id) }
+      context 'when there is an error' do
+        let!(:expense) { build(:expense, :approved, user: employee, amount: nil) }
+        it "renders the modal" do
+          expense.valid?
 
-        expect(rendered).to be_empty
+          render "devise/shared/error_messages", resource: expense
+
+          expect(rendered).to include(I18n.t("errors.forms.expenses.amount.blank"))
+        end
+      end
+      context 'when there is no error' do
+        let!(:expense) { build(:expense, :approved, user: employee) }
+        it "does not render the modal" do
+          expense.valid?
+
+          render "devise/shared/error_messages", resource: expense
+
+          expect(rendered).to be_empty
+        end
       end
     end
   end

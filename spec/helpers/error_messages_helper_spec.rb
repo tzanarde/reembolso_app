@@ -38,4 +38,23 @@ RSpec.describe ErrorMessagesHelper do
       end
     end
   end
+  describe "#expense_error_message" do
+    context 'with a resource' do
+      let!(:expense) { build(:expense, :approved) }
+      context 'with an error' do
+        context "for general errors" do
+          before { expense.errors.add(:amount, :blank) }
+
+          it "returns the correct error message" do
+            expect(expense_error_message(expense)).to eq(I18n.t('errors.forms.expenses.amount.blank'))
+          end
+        end
+      end
+      context 'without an error' do
+        it "returns no message" do
+          expect(expense_error_message(expense)).to be_nil
+        end
+      end
+    end
+  end
 end

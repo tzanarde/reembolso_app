@@ -16,4 +16,14 @@ module ErrorMessagesHelper
       I18n.t(custom_key, default: resource.errors.full_messages.first)
     end
   end
+
+  def expense_error_message(resource)
+    if resource.errors.any?
+      error_key = resource.errors.details.first[1].first[:error]
+      attribute = resource.errors.details.first[0]
+      custom_key = "errors.forms.expenses.#{attribute}.#{error_key}"
+
+      I18n.t(custom_key, default: resource.errors.full_messages.first)
+    end
+  end
 end
