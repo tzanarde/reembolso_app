@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'a7bbcaaacdbd444fc78fcbd157a07bed08f2c0ca03b99234ba3a0755521d4e2e3cc02dac7e5515ce76428132b88135d762a258c7a6e4d879e434a65e4f3e468a'
+  config.secret_key = 'aS/VdEVltW8S9sIG/jTnHghbXRgM2eje8l/87oS/AfXuqsOrYurC5XkcFSIJP9yZPD/7L1+wL1nc0fwxsAahifGA8Dbi9b5jZHH6K0Ic7U2ywRDS0ZMoFw8jDepxioHBmXAcCvDAlmlQObRRGJz+d+fMIFvjC1Ynyz3FfqBBJ/SkK/fkEmbX5kC6iriUYhzwMCUdDWpazm2ul36iDJ4MKb9Cex5j3DGyvjFu6eMEB1Csph3N+pNU+Fgq8fdXyonO2ujg2Mj5wT/opPmWfHwJzLCX1a5ljHQvqJDGzQskxbXGrnk6wRQFDUEi7gvn+o1Bp0m4gHrYiagAwitG3LElxfqlRFSurJLcjEZ4m1DJOvp5i18t+YstT/SDE0jdEcqfwOfim2ayUXVABb7jCMN36K5oSmMk--+oZ2HMv4WLJN8RFz--/E9jzVm2Bcy7tPnmdMQ6yw=='
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -302,7 +302,7 @@ Devise.setup do |config|
   # apps is `200 OK` and `302 Found` respectively, but new apps are generated with
   # these new defaults that match Hotwire/Turbo behavior.
   # Note: These might become the new default in future versions of Devise.
-  config.responder.error_status = :unprocessable_entity
+  config.responder.error_status = :unprocessable_content
   config.responder.redirect_status = :see_other
 
   # ==> Configuration for :registerable
