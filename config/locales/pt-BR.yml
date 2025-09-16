@@ -74,6 +74,7 @@ pt-BR:
       tax_receipt: "Cupom fiscal"
       receipt: "Recibo"
       tags: "tags"
+      location: "Local"
   images_alt:
     home: "Tela Inicial"
     pending_expenses: "Tela de Despesas Pendentes"
@@ -103,3 +104,16 @@ pt-BR:
           blank: "Gestor é um campo obrigatório quando o tipo de usuário é Funcionário, e está vazio"
       user_sign_in:
         invalid_credentials: "E-mail ou senha inválidos"
+      expenses:
+        amount:
+          blank: "Valor gasto é um campo obrigatório e está vazio"
+        date:
+          blank: "Data é um campo obrigatório e está vazio"
+        tags:
+          blank: "Tag é um campo obrigatório e está vazio"
+        location:
+          blank: "Local é um campo obrigatório e está vazio"
+          too_long: "O local informado é muito grande. Máximo de 50 caracteres"
+        description:
+          blank: "Descrição é um campo obrigatório e está vazio"
+          too_long: "A descrição informada é muito grande. Máximo de 80 caracteres"

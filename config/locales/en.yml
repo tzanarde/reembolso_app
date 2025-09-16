@@ -1,15 +1,15 @@
 en:
   titles:
-    app: "Refund Request System"
+    app: "Reimbursement Request System"
     sign_up: "Sign Up"
-    forgot_password: "Forgot Your Password?"
+    forgot_password: "Forgot your password?"
     pending_expenses: "Pending Requests"
     my_pending_expenses: "My Pending Requests"
-    refound_request: "Refund Request"
+    refound_request: "Reimbursement Request"
     pending_expenses_section: "Requests for Approval"
-    my_refound_request: "My Refund Request"
-    add_refound_request: "New Refund Request"
-    edit_refound_request: "Edit Refund Request"
+    my_refound_request: "My Reimbursement Request"
+    add_refound_request: "New Reimbursement Request"
+    edit_refound_request: "Edit Reimbursement Request"
     request_history: "Request History"
     my_request_history: "My Request History"
     edit_user: "Edit User"
@@ -24,7 +24,7 @@ en:
     login: "Login"
     logout: "Logout"
     send_instructions: "Send Instructions"
-    forgot_password: "Forgot Your Password?"
+    forgot_password: "Forgot your password?"
     save_edit: "Save Edit"
     delete_user: "Delete User"
     sign_up: "Sign Up"
@@ -41,14 +41,14 @@ en:
     filter: "Filter"
     edit_user: "Edit User"
   messages:
-    refound_request_approved: "The refund request has been approved!"
-    refound_request_remove_confirmation: "Are you sure you want to remove the refund request?"
-    refound_request_sent: "Your refund request has been sent for manager approval!"
-    refound_request_edited: "Your refund request has been successfully edited!"
-    refound_request_denied: "The refund request has been denied!"
-    refound_request_removed: "Your refund request has been successfully removed!"
-    user_register_request_sent_message: "Your registration request has been sent for manager approval!"
-    user_register_request_sent_email: "You will receive an email once your request is approved."
+    refound_request_approved: "The reimbursement request has been approved!"
+    refound_request_remove_confirmation: "Are you sure you want to remove the reimbursement request?"
+    refound_request_sent: "Your reimbursement request has been sent to your manager for approval!"
+    refound_request_edited: "Your reimbursement request has been successfully edited!"
+    refound_request_denied: "The reimbursement request has been denied!"
+    refound_request_removed: "Your reimbursement request has been successfully removed!"
+    user_register_request_sent_message: "Your registration request has been sent to the selected manager for approval!"
+    user_register_request_sent_email: "You will receive an email after your approval."
     user_edited: "Your user has been successfully updated!"
   fields:
     user:
@@ -60,7 +60,7 @@ en:
       choose_user_type: "select user type"
       choose_manager: "select your manager"
     filters:
-      filter: "filter"
+      fiter: "filter"
       filter_by: "Filter by"
       period: "period"
       employee: "employee"
@@ -71,9 +71,10 @@ en:
       amount_spent: "amount spent"
       date: "date"
       description: "description"
-      tax_receipt: "Tax Receipt"
+      tax_receipt: "Tax receipt"
       receipt: "Receipt"
       tags: "tags"
+      location: "Location"
   images_alt:
     home: "Home Screen"
     pending_expenses: "Pending Expenses Screen"
@@ -86,20 +87,33 @@ en:
     forms:
       user_sign_up:
         name:
-          blank: "Name is a required field and cannot be empty"
-          too_long: "The name entered is too long. Maximum 50 characters"
+          blank: "Name is a required field and is empty"
+          too_long: "The provided name is too long. Maximum 50 characters"
         email:
-          blank: "Email is a required field and cannot be empty"
-          too_long: "The email entered is too long. Maximum 60 characters"
+          blank: "Email is a required field and is empty"
+          too_long: "The provided email is too long. Maximum 60 characters"
           not_found: "Email not found"
         password:
-          blank: "Password is a required field and cannot be empty"
-          not_match: "Passwords do not match"
-          too_short: "The password is too short, it must be at least 6 characters"
-          current_blank: "Current password must be provided to edit the user and it was not entered"
+          blank: "Password is a required field and is empty"
+          not_match: "The passwords provided do not match"
+          too_short: "The provided password is too short, it must have at least 6 characters"
+          current_blank: "You must provide the current password to edit the user and it was not provided"
         role:
-          blank: "User type is a required field and cannot be empty"
+          blank: "User type is a required field and is empty"
         manager_user_id:
-          blank: "Manager is required when the user type is Employee and cannot be empty"
+          blank: "Manager is required when the user type is Employee, and it is empty"
       user_sign_in:
         invalid_credentials: "Invalid email or password"
+      expenses:
+        amount:
+          blank: "Amount spent is a required field and is empty"
+        date:
+          blank: "Date is a required field and is empty"
+        tags:
+          blank: "Tag is a required field and is empty"
+        location:
+          blank: "Location is a required field and is empty"
+          too_long: "The location provided is too long. Maximum 50 characters"
+        description:
+          blank: "Description is a required field and is empty"
+          too_long: "The provided description is too long. Maximum 80 characters"
