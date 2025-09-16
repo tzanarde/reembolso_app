@@ -5,7 +5,7 @@ RSpec.describe "Sign in", type: :system do
   context 'when the user is logged out' do
     context 'for both employee and manager' do
       context 'for the login form' do
-        let!(:user) { create(:user, :manager, password: '123456', password_confirmation: '123456') }
+        let!(:user) { create(:user, :manager) }
         context 'with valid information' do
           it "allows a user to sign in" do
             visit new_user_session_path

@@ -2,8 +2,8 @@ require "rails_helper"
 include MatchHelpers
 
 RSpec.describe "Edit User Registration", type: :system do
-  let!(:manager) { create(:user, :manager, password: '123456', password_confirmation: '123456') }
-  let!(:employee) { create(:user, :employee, password: '123456', password_confirmation: '123456', manager_user_id: manager.id) }
+  let!(:manager) { create(:user, :manager) }
+  let!(:employee) { create(:user, :employee, manager_user_id: manager.id) }
   context 'when the user is logged in' do
     before { login_as(manager, scope: :user) }
     context 'with valid information' do

@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :user do
-    password { "password" }
+    password { "123456" }
+    password_confirmation { "123456" }
     active { true }
 
     trait :manager do

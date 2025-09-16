@@ -9,7 +9,7 @@ RSpec.describe Users::PasswordsController, type: :controller do
 
   describe "POST #create" do
     context "with a valid user" do
-      let(:user) { create(:user, :manager, password: '123456', password_confirmation: '123456') }
+      let(:user) { create(:user, :manager) }
       context "with a valid email to request password change" do
         let(:valid_attributes) { { email: user.email } }
         it "creates a password change request and defines the flash" do

@@ -5,7 +5,7 @@ RSpec.describe "Forgot Password", type: :system do
   before do
     Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   end
-  let!(:user) { create(:user, :manager, password: '123456', password_confirmation: '123456') }
+  let!(:user) { create(:user, :manager) }
   context 'when the user is logged out' do
     context 'for both employee and manager' do
       context 'for the forgot password form' do

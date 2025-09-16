@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "devise/shared/_error_messages.html.haml", type: :view do
   context 'for the resource errors' do
     context 'when there is an error' do
-      let!(:user) { build(:user, :manager, email: nil, password: '123456', password_confirmation: '123456') }
+      let!(:user) { build(:user, :manager, email: nil) }
       it "renders the modal" do
         user.valid?
 
@@ -13,7 +13,7 @@ RSpec.describe "devise/shared/_error_messages.html.haml", type: :view do
       end
     end
     context 'when there is no error' do
-      let!(:user) { build(:user, :manager, password: '123456', password_confirmation: '123456') }
+      let!(:user) { build(:user, :manager) }
       it "does not render the modal" do
         user.valid?
 

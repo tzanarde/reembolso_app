@@ -9,7 +9,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
   describe "POST #create" do
     context "with a valid user" do
-      let(:valid_attributes) { attributes_for(:user, :manager, password: '123456', password_confirmation: '123456') }
+      let(:valid_attributes) { attributes_for(:user, :manager) }
       it "creates a new user and defines the flash" do
         expect do
           post :create, params: { user: valid_attributes }
@@ -29,9 +29,9 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
   describe "PATCH #update" do
     context "with a valid user" do
-      let(:user) { create(:user, :manager, password: '123456', password_confirmation: '123456') }
+      let(:user) { create(:user, :manager) }
       context "with valid information to update" do
-        let(:valid_attributes) { attributes_for(:user, :manager, email: 'new@email.com', password: '123456', password_confirmation: '123456', current_password: '123456') }
+        let(:valid_attributes) { attributes_for(:user, :manager, email: 'new@email.com', current_password: '123456') }
         context 'whe the user is logged in' do
           before { sign_in user }
           it "updates the user and defines the flash" do

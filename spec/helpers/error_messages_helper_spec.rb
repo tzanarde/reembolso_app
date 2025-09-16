@@ -7,7 +7,7 @@ RSpec.describe ErrorMessagesHelper do
 
   describe "#error_message" do
     context 'with a resource' do
-      let!(:user) { build(:user, :manager, password: '123456', password_confirmation: '123456') }
+      let!(:user) { build(:user, :manager) }
       context 'with an error' do
         context "for general errors" do
           before { user.errors.add(:email, :not_found) }
