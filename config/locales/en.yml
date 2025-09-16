@@ -91,6 +91,7 @@ en:
         email:
           blank: "Email is a required field and cannot be empty"
           too_long: "The email entered is too long. Maximum 60 characters"
+          not_found: "Email not found"
         password:
           blank: "Password is a required field and cannot be empty"
           not_match: "Passwords do not match"

@@ -91,6 +91,7 @@ pt-BR:
         email:
           blank: "E-mail é um campo obrigatório e está vazio"
           too_long: "O e-mail informado é muito grande. Máximo de 60 caracteres"
+          not_found: "E-mail não encontrado"
         password:
           blank: "Senha é um campo obrigatório e está vazio"
           not_match: "As senhas informadas não são iguais"
