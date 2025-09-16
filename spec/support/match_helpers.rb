@@ -15,6 +15,10 @@ module MatchHelpers extend RSpec::SharedContext
     fill_in "user_password", with: password unless password.nil?
   end
 
+  def fill_form_forgot_password(email: nil)
+    fill_in "user_email", with: email unless email.nil?
+  end
+
   def fill_form_edit_user(name: nil, email: nil, password: nil, password_confirmation: nil, current_password: nil, user_role: nil, manager: nil)
     fill_in "user_name", with: name
     fill_in "user_email", with: email
