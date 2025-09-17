@@ -114,6 +114,10 @@ en:
           blank: "Date is a required field and is empty"
         tags:
           blank: "Tag is a required field and is empty"
+        receipt_nf:
+          blank: "It is mandatory to upload the Invoice file, but it was not provided"
+        receipt_card:
+          blank: "It is mandatory to upload the Card Receipt file, but it was not provided"
         location:
           blank: "Location is a required field and is empty"
           too_long: "The location provided is too long. Maximum 50 characters"

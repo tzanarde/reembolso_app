@@ -114,6 +114,10 @@ pt-BR:
           blank: "Data é um campo obrigatório e está vazio"
         tags:
           blank: "Tag é um campo obrigatório e está vazio"
+        receipt_nf:
+          blank: "É obrigatório enviar o arquivo de Nota Fiscal e ele não foi enviado"
+        receipt_card:
+          blank: "É obrigatório enviar o arquivo de Recido do Cartão e ele não foi enviado"
         location:
           blank: "Local é um campo obrigatório e está vazio"
           too_long: "O local informado é muito grande. Máximo de 50 caracteres"
