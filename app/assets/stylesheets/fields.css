@@ -47,3 +47,13 @@ select.text-field {
 select.text-field option {
   color: var(--regular-text-color);
 }
+
+.file-field {
+  align-items: center;
+  display: none;
+}
+
+.file-preview {
+  display: none;
+  width: 50%;
+}

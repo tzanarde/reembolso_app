@@ -48,8 +48,27 @@
 }
 
 .btn-sm {
-    width: 15%;
+    width: 80px;
     height: 40px;
+}
+
+.btn-md {
+    width: 80%;
+    height: 40px;
+}
+
+.btn-simple {
+    min-height: 32px;
+    min-width: 32px;
+    max-height: 32px;
+    max-width: 32px;
+    padding: 0;
+    background-color: var(--simple-button-color);
+    color: var(--regular-text-color);
+}
+
+.btn-simple:hover {
+    background-color: var(--simple-button-hover-color);
 }
 
 .btn-rounded {

@@ -14,6 +14,16 @@
     background-color: var(--primary-container-color);
 }
 
+.container-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 .container-form {
     display: flex;
     flex-direction: column;
@@ -44,7 +54,9 @@
 }
 
 .container-full-screen {
-    height: 80vh;
+    min-height: 800px;
+    height: calc(100vh - 135px);
+    overflow-y: auto;
     width: 100%;
     max-width: 800px;
 }
@@ -83,4 +95,27 @@
     justify-content: start;
     height: 40px;
     width: 100%;
+}
+
+.files-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--tertiary-container-color);
+    border-radius: 10px;
+    border: 1px solid var(--primary-border-color);
+}
+
+.file-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    gap: 10px;
+    height: 100%;
+    width: 50%;
 }

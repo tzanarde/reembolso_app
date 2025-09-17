@@ -19,6 +19,8 @@
     --cancel-button-hover-color: #d66363;    /* Cor do hover dos botões de cancelar */
     --confirm-button-color: #69DB7C;         /* Cor dos botões de confirmar */
     --confirm-button-hover-color: #49aa5a;   /* Cor do hover dos botões de confirmar */
+    --simple-button-color: #cecece;          /* Cor dos botões simples */
+    --simple-button-hover-color: #a7a7a7;    /* Cor do hover dos botões simples */
 
     --primary-border-color: #d4d4d4;         /* Cor primária das bordas */
 
