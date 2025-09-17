@@ -40,6 +40,7 @@ pt-BR:
     yes: "Sim"
     filter: "Filtrar"
     edit_user: "Editar Usuário"
+    add: "Adicionar"
   messages:
     refound_request_approved: "A solicitação de reembolso foi aprovada!"
     refound_request_remove_confirmation: "Confirma que deseja remover a solicitação de reembolso?"
