@@ -41,6 +41,8 @@ en:
     filter: "Filter"
     edit_user: "Edit User"
     add: "Add"
+    add_nf_file: "+ Sales Receipt"
+    add_card_file: "+ Card Receipt"
   messages:
     refound_request_approved: "The reimbursement request has been approved!"
     refound_request_remove_confirmation: "Are you sure you want to remove the reimbursement request?"
