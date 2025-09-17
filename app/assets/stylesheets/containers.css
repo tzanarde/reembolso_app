@@ -49,6 +49,13 @@
     max-width: 800px;
 }
 
+.tags-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
 .regular-container {
     display: flex;
     flex-direction: row;
@@ -68,4 +75,12 @@
     padding: 10px;
     border-radius: 10px;
     background-color: var(--box-container-color);
+}
+
+#tags-box {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    height: 40px;
+    width: 100%;
 }

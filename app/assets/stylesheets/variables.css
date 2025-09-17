@@ -24,4 +24,7 @@
 
     --menu-container-color: #b8b8b8;         /* Cor de fundo do menu */
     --menu-container-hover-color: #838383;   /* Cor do hover do fundo do menu */
+
+    --tag-color: #bfe1fd;                    /* Cor das tags */
+    --tag-hover-color: #88bce6;              /* Cor do hover das tags */
 }

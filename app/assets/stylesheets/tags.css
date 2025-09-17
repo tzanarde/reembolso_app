@@ -1,0 +1,16 @@
+.tag {
+  display: inline-block;
+  background-color: var(--tag-color);
+  color: var(--regular-text-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tag:hover {
+  background-color: var(--tag-hover-color);
+}
