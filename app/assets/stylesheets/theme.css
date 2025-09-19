@@ -43,3 +43,14 @@ body {
     margin: 20px 0;
     display: block;
 }
+
+.no-link-layout {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}

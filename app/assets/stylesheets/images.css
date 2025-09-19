@@ -1,0 +1,36 @@
+.file-preview-none {
+  display: none;
+  width: 50%;
+}
+
+.file-preview {
+  display: block;
+  width: 90%;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.preview-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.file-preview-large {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}

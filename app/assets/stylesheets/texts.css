@@ -49,3 +49,94 @@
     margin: 0;
     font-weight: bold;
 }
+
+.amount-text-view {
+    font-size: 48px;
+    color: var(--alert-text-color);
+    height: 30%;
+}
+
+.day-text {
+    font-size: 36px;
+    text-align: center;
+    margin: 0;
+}
+
+.month-text {
+    font-size: 28px;
+    text-align: center;
+    margin: 0;
+}
+
+.description-text-area {
+    height: 25%;
+    font-size: 18px;
+    margin: 0;
+}
+
+.location-text-area {
+    height: 10%;
+    font-size: 18px;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+
+.expense-status-index {
+  display: inline-block;
+  color: var(--regular-text-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  margin: 0;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  min-width: 75px;
+  width: 15%;
+  text-align: center;
+}
+
+.expense-status-index:hover {
+  background-color: var(--tag-hover-color);
+}
+
+.status-pending {
+    background-color: var(--pending-status-color);
+}
+
+.status-approved {
+    background-color: var(--approved-status-color);
+}
+
+.status-declined {
+    background-color: var(--declined-status-color);
+}
+
+.expense-employee-name-index {
+    font-weight: bold;
+    font-size: 18px;
+    width: 50%;
+    margin: 0;
+}
+
+.expense-date-index {
+    font-size: 17px;
+    width: 15%;
+    margin: 0;
+    text-align: right;
+}
+
+.expense-amount-index {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--alert-text-color);
+    width: 20%;
+    margin: 0;
+    text-align: right;
+}
+
+.expense-description-index {
+    width: 100%;
+    margin: 0;
+}

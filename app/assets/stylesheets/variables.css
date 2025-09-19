@@ -1,32 +1,37 @@
 :root {
-    --app-bg-color: #F8F9FA;                 /* Cor de fundo do app */
+    --app-bg-color: #F8F9FA;                   /* Cor de fundo do app */
 
-    --primary-container-color: #E9ECEF;      /* Cor de fundo primária dos containeres */
-    --secondary-container-color: #ff00b3;    /* Cor de fundo secundária dos containeres */
-    --tertiary-container-color: #fff;        /* Cor de fundo secundária dos containeres */
+    --primary-container-color: #E9ECEF;        /* Cor de fundo primária dos containeres */
+    --secondary-container-color: #ff00b3;      /* Cor de fundo secundária dos containeres */
+    --tertiary-container-color: #fff;          /* Cor de fundo terciária dos containeres */
+    --tertiary-container-hover-color: #ebebeb; /* Cor do hover de fundo terciária dos containeres */
 
-    --box-container-color: #FFEC99;          /* Cor de fundo dos boxes containeres */
+    --box-container-color: #FFEC99;            /* Cor de fundo dos boxes containeres */
 
-    --main-title-text-color: #4DABF7;        /* Cor dos títulos principais */
-    --title-text-color: #1b1b1b;             /* Cor dos títulos de telas */
-    --regular-text-color: #303030;           /* Cor dos textos */
-    --alert-text-color: #f06e6e;             /* Cor dos textos de alerta*/
-    --placeholder-text-color: #727272;       /* Cor dos textos de placeholder*/
+    --main-title-text-color: #4DABF7;          /* Cor dos títulos principais */
+    --title-text-color: #1b1b1b;               /* Cor dos títulos de telas */
+    --regular-text-color: #303030;             /* Cor dos textos */
+    --alert-text-color: #f06e6e;               /* Cor dos textos de alerta*/
+    --placeholder-text-color: #727272;         /* Cor dos textos de placeholder*/
 
-    --primary-button-color: #4DABF7;         /* Cor primária dos botões */
-    --primary-button-hover-color: #2180ce;   /* Cor do hover dos botões primários */
-    --cancel-button-color: #FF8787;          /* Cor dos botões de cancelar */
-    --cancel-button-hover-color: #d66363;    /* Cor do hover dos botões de cancelar */
-    --confirm-button-color: #69DB7C;         /* Cor dos botões de confirmar */
-    --confirm-button-hover-color: #49aa5a;   /* Cor do hover dos botões de confirmar */
-    --simple-button-color: #cecece;          /* Cor dos botões simples */
-    --simple-button-hover-color: #a7a7a7;    /* Cor do hover dos botões simples */
+    --primary-button-color: #4DABF7;           /* Cor primária dos botões */
+    --primary-button-hover-color: #2180ce;     /* Cor do hover dos botões primários */
+    --cancel-button-color: #FF8787;            /* Cor dos botões de cancelar */
+    --cancel-button-hover-color: #d66363;      /* Cor do hover dos botões de cancelar */
+    --confirm-button-color: #69DB7C;           /* Cor dos botões de confirmar */
+    --confirm-button-hover-color: #49aa5a;     /* Cor do hover dos botões de confirmar */
+    --simple-button-color: #cecece;            /* Cor dos botões simples */
+    --simple-button-hover-color: #a7a7a7;      /* Cor do hover dos botões simples */
 
-    --primary-border-color: #d4d4d4;         /* Cor primária das bordas */
+    --primary-border-color: #d4d4d4;           /* Cor primária das bordas */
 
-    --menu-container-color: #b8b8b8;         /* Cor de fundo do menu */
-    --menu-container-hover-color: #838383;   /* Cor do hover do fundo do menu */
+    --menu-container-color: #b8b8b8;           /* Cor de fundo do menu */
+    --menu-container-hover-color: #838383;     /* Cor do hover do fundo do menu */
 
-    --tag-color: #bfe1fd;                    /* Cor das tags */
-    --tag-hover-color: #88bce6;              /* Cor do hover das tags */
+    --tag-color: #bfe1fd;                      /* Cor das tags */
+    --tag-hover-color: #88bce6;                /* Cor do hover das tags */
+
+    --pending-status-color: #FFEC99;           /* Cor do span do status pendente */
+    --approved-status-color: #69DB7C;          /* Cor do span do status aprovado */
+    --declined-status-color: #FF8787;          /* Cor do span do status recusado */
 }
