@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root "pages#home"
   
-  resources :expenses
+  resources :expenses do
+    member do
+      patch :approve
+      patch :decline
+    end
+  end
 
   get 'pages/home'
   get 'user_menu', to: 'pages#user_menu'
