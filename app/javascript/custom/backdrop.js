@@ -3,8 +3,8 @@ document.addEventListener("turbo:load", () => {
   const backdrop = document.getElementById("modal-backdrop");
 
   if (modal && backdrop) {
-    modal.style.display = "block";
-    backdrop.style.display = "block";
+    modal.style.display = "flex";
+    backdrop.style.display = "flex";
   }
 
   document.addEventListener("click", (e) => {
