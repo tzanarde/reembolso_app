@@ -54,7 +54,7 @@
 /* Tamanhos de container */
 .container-center-sm {
     width: 80vw;
-    height: 50vh;
+    height: fit-content;
     max-width: 500px;
 }
 
