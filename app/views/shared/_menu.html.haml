@@ -18,7 +18,7 @@
 
     .vertical-divider
 
-    - if current_user.employee?
+    - if current_user&.employee?
       = link_to new_expense_path, id: "add-expense-item" do
         .menu-item
           = image_tag "add.png", alt: t("images_alt.add_expense")
