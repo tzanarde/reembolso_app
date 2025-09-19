@@ -1,0 +1,20 @@
+.modal-backdrop#modal-backdrop{ class: 'hidden' }
+  .modal-filter#modal-filter{ class: 'hidden' }
+    = form_with url: expenses_path, method: :get, local: true, class: "filter-form" do |f|
+
+      .container-form
+        = hidden_field_tag :type, params[:type] if params[:type].present?
+        = f.text_field :description, placeholder: t("fields.expenses.description"), class: "text-field", id: "filter_description", value: params[:description]
+        = f.text_field :location, placeholder: t("fields.expenses.location"), class: "text-field", id: "filter_location", value: params[:location]
+        = f.select :tags, options_from_collection_for_select(Tag.all, :id, :description, params[:tags]), { include_blank: t("fields.expenses.tags") }, class: "tag-field", id: "filter_tags", multiple: true
+        = f.select :employee_id, options_from_collection_for_select(User.employees, :id, :name, params[:employee_id]), { include_blank: t("fields.user.full_name") }, class: "text-field", id: "filter_employee_id"
+        .container-hor
+          = f.date_field :start_date, class: "text-field", id: "filter_start_date", value: params[:start_date]
+          = f.date_field :final_date, class: "text-field", id: "filter_final_date", value: params[:final_date]
+        .container-hor
+          = number_field_tag :min_amount, params[:min_amount], class: "text-field", placeholder: "R$ 0,00"
+          = number_field_tag :max_amount, params[:max_amount], class: "text-field", placeholder: "R$ 0,00"
+
+      .container-hor
+        = f.submit t("buttons.filter"), class: "btn btn-primary btn-half-width"
+        = link_to t("buttons.reset_filter"), expenses_path(type: params[:type]), class: "btn btn-cancel btn-half-width"

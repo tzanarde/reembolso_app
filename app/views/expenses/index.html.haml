@@ -1,0 +1,45 @@
+= render "devise/shared/messages", resource: nil
+.main-top
+
+  .container-top
+    = link_to request.referer, class: "btn btn-simple" do
+      = image_tag "back.png", alt: "Voltar", width: 24, height: 24
+    - if params[:type] == 'pending'
+      - if current_user.employee?
+        %h2.title-text= t("titles.my_pending_expenses")
+      - if current_user.manager?
+        %h2.title-text= t("titles.refound_request")
+    - elsif params[:type] == 'history'
+      - if current_user.employee?
+        %h2.title-text= t("titles.my_request_history")
+      - if current_user.manager?
+        %h2.title-text= t("titles.request_history")
+
+  .container-tools
+    = link_to "#", id: "classify-button", class: "btn btn-simple" do
+      = image_tag("classify.png", alt: "Classificar")
+
+    = link_to "#", id: "filter-button", class: "btn btn-simple" do
+      = image_tag("filter.png", alt: "Filtrar")
+
+  = render 'classify'
+
+  = render 'filter'
+
+  .container.container-primary.container-content-index
+    - @expenses.each_with_index do |expense, expense_index|
+
+      = link_to expense_path(expense), class: "no-link-layout" do
+        .expense-box
+          .expense-box-top
+            - status = 'pending' if expense.status == 'P'
+            - status = 'approved' if expense.status == 'A'
+            - status = 'declined' if expense.status == 'D'
+            %span{ class: "expense-status-index status-#{status}" }= expense.full_status
+            %p.expense-employee-name-index= expense.user.name
+            %p.expense-date-index= "#{expense.date.day}/#{expense.date.strftime("%B").slice(0, 3)}"
+            %p.expense-amount-index= number_to_currency(expense.amount, unit: "R$ ", separator: ",", delimiter: ".")
+          %p.expense-description-index= expense.description
+          .tags-container-view
+            - expense.tags.each_with_index do |tag, tag_index|
+              %span.tag{ id: "expense_tag_#{tag_index}" }= tag.description
