@@ -1,0 +1,51 @@
+= render "devise/shared/messages", resource: nil
+.main-top
+
+  .container-top
+    - if @expense.pending?
+      = link_to expenses_path(type: "pending"), class: "btn btn-simple" do
+        = image_tag "back.png", alt: "Voltar", width: 24, height: 24
+    - else
+      = link_to expenses_path(type: "history"), class: "btn btn-simple" do
+        = image_tag "back.png", alt: "Voltar", width: 24, height: 24
+
+    - if current_user.employee?
+      %h2.title-text= t("titles.my_refound_request")
+    - if current_user.manager?
+      %h2.title-text= t("titles.refound_request")
+
+  .container.container-primary.container-full-screen-secondary
+    %p#expense_description.description-text-area= @expense.description
+    %p#expense_location.location-text-area= @expense.location
+    .container-hor
+      .tags-container-view
+        - @expense.tags.each_with_index do |tag, index|
+          %span.tag{ id: "expense_tag_#{index}" }= tag.description
+      .date-container-view
+        %p#expense_day.day-text= @expense.date.day
+        %p#expense_month.month-text= @expense.date.strftime("%B").slice(0, 3)
+
+    .files-container.files-container-view
+      .file-box
+        = image_tag url_for(@expense.receipt_nf), class: "file-preview clickable", id: "expense_receipt_nf"
+      .file-box
+        = image_tag url_for(@expense.receipt_card), class: "file-preview clickable", id: "expense_receipt_card"
+
+    %p#expense_amount.amount-text-view= number_to_currency(@expense.amount, unit: "R$ ", separator: ",", delimiter: ".")
+
+    - if current_user.employee?
+      .container-hor.buttons-container
+        = button_to t("buttons.remove"), "/expenses/#{@expense.id}", method: :delete, class: "btn btn-cancel btn-full-width", id: "remove_expense"
+        = link_to t("buttons.edit"), edit_expense_path(@expense), class: "btn btn-primary btn-full-width", id: "edit_expense"
+
+    - if current_user.manager?
+      .container-hor.buttons-container
+        - if @expense.pending?
+          = button_to t("buttons.decline"), decline_expense_path(@expense), method: :patch, class: "btn btn-cancel btn-full-width", id: "decline_expense"
+          = button_to t("buttons.approve"), approve_expense_path(@expense), method: :patch, class: "btn btn-confirm btn-full-width", id: "approve_expense"
+
+  #preview-image-nf.hidden.preview-image
+    = image_tag url_for(@expense.receipt_nf), class: "file-preview-large", id: 'expense_receipt_nf_large'
+    
+  #preview-image-card.hidden.preview-image
+    = image_tag url_for(@expense.receipt_card), class: "file-preview-large", id: 'expense_receipt_card_large'
