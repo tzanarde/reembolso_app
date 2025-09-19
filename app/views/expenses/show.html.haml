@@ -35,7 +35,7 @@
 
     - if current_user.employee?
       .container-hor.buttons-container
-        = button_to t("buttons.remove"), "/expenses/#{@expense.id}", method: :delete, class: "btn btn-cancel btn-full-width", id: "remove_expense"
+        = button_to t("buttons.remove"), expense_path(@expense), method: :delete, class: "btn btn-cancel btn-full-width", id: "remove_expense"
         = link_to t("buttons.edit"), edit_expense_path(@expense), class: "btn btn-primary btn-full-width", id: "edit_expense"
 
     - if current_user.manager?

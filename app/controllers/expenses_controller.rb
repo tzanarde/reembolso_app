@@ -48,8 +48,8 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy!
-    
-    redirect_to expenses_url
+
+    redirect_to root_path
   end
 
   def approve
