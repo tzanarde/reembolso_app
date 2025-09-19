@@ -6,17 +6,24 @@
 
     .vertical-divider
 
-    = link_to root_path, id: "pending-expenses-item" do
+    = link_to expenses_path(type: "pending"), id: "pending-expenses-item" do
       .menu-item
         = image_tag "pending_expenses.png", alt: t("images_alt.pending_expenses")
 
     .vertical-divider
 
-    = link_to root_path, id: "expenses-history-item" do
+    = link_to expenses_path(type: "history"), id: "expenses-history-item" do
       .menu-item
         = image_tag "expenses_history.png", alt: t("images_alt.expenses_history")
 
     .vertical-divider
+
+    - if current_user.employee?
+      = link_to new_expense_path, id: "add-expense-item" do
+        .menu-item
+          = image_tag "add.png", alt: t("images_alt.add")
+
+      .vertical-divider
 
     = link_to '/user_menu', id: "user-item" do
       .menu-item

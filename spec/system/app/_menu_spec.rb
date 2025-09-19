@@ -32,6 +32,12 @@ RSpec.describe "shared/_menu.html.haml", type: :view do
       expect(rendered).to have_css("a#expenses-history-item[href='/']")
     end
 
+    it "renders the add expense item" do
+      expect(rendered).to have_css("div.menu-item")
+      expect(rendered).to have_css("div.menu-item img[src*='expenses/new'][alt='#{t("images_alt.expenses_history")}']")
+      expect(rendered).to have_css("a#add-expense-item[href='/']")
+    end
+
     it "renders the user item" do
       expect(rendered).to have_css("div.menu-item")
       expect(rendered).to have_css("div.menu-item img[src*='user'][alt='#{t("images_alt.user")}']")
