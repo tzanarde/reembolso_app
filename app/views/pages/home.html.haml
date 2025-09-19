@@ -6,18 +6,30 @@
 
   #expenses-section
 
-    %h3#expenses-title.section-title-text= t('titles.pending_expenses_section')
+    - if current_user.employee?
+      %h3#expenses-title.section-title-text= t('titles.my_pending_expenses')
+    - if current_user.manager?
+      %h3#expenses-title.section-title-text= t('titles.pending_expenses_section')
 
     .regular-container
 
       #all-expenses-box.regular-box
         %h4#all-expenses-title.subtitle-text= t('titles.all_pending_expenses')
-        %p#all-expenses-number.indicator-text= '15'
+        - if current_user.employee?
+          %p#all-expenses-number.indicator-text= Expense.pending_expenses_by_employee(current_user).count
+        - if current_user.manager?
+          %p#all-expenses-number.indicator-text= Expense.pending_expenses_by_manager(current_user).count
 
       #todays-expenses-box.regular-box
         %h4#todays-expenses-title.subtitle-text= t('titles.todays_pending_expenses')
-        %p#todays-expenses-number.indicator-text= '3'
+        - if current_user.employee?
+          %p#todays-expenses-number.indicator-text= Expense.todays_pending_expenses_by_employee(current_user).count
+        - if current_user.manager?
+          %p#todays-expenses-number.indicator-text= Expense.todays_pending_expenses_by_manager(current_user).count
 
       #week-expenses-box.regular-box
         %h4#week-expenses-title.subtitle-text= t('titles.week_pending_expenses')
-        %p#week-expenses-number.indicator-text= '7'
+        - if current_user.employee?
+          %p#week-expenses-number.indicator-text= Expense.week_pending_expenses_by_employee(current_user).count
+        - if current_user.manager?
+          %p#week-expenses-number.indicator-text= Expense.week_pending_expenses_by_manager(current_user).count

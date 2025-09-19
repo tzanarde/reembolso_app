@@ -21,11 +21,21 @@ RSpec.describe "pages/hemo.html.haml", type: :view do
 
     context 'for the pending expenses' do
       context 'for the section title' do
-        it "renders the title" do
-          expect(rendered).to have_css("#expenses-section h3#expenses-title.section-title-text")
+        context 'for an employee' do
+          it "renders the title" do
+            expect(rendered).to have_css("#expenses-section h3#expenses-title.section-title-text")
+          end
+          it "renders the expected text" do
+            expect(rendered).to have_selector("h3", text: t('titles.my_pending_expenses'))
+          end
         end
-        it "renders the expected text" do
-          expect(rendered).to have_selector("h3", text: t('titles.pending_expenses_section'))
+        context 'for a manager' do
+          it "renders the title" do
+            expect(rendered).to have_css("#expenses-section h3#expenses-title.section-title-text")
+          end
+          it "renders the expected text" do
+            expect(rendered).to have_selector("h3", text: t('titles.pending_expenses_section'))
+          end
         end
       end
 
