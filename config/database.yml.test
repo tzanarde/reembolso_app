@@ -1,0 +1,8 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: tzanarde
+  password: tzanarde
+  host: db
+  database: reembolso_app_test

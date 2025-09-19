@@ -6,13 +6,20 @@ default: &default
   password: tzanarde
   pool: 5
 
+
 development:
   <<: *default
   database: reembolso_app_development
+  host: db
+  username: tzanarde
+  password: tzanarde
 
 test:
   <<: *default
   database: reembolso_app_test
+  host: db
+  username: tzanarde
+  password: tzanarde
 
 production:
   <<: *default

@@ -45,6 +45,11 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
+  config.before(:suite) do
+    DatabaseCleaner.allow_remote_database_url = true
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   config.before(:each) { ActiveStorage::Blob.all.each(&:purge) }
   config.after(:each)  { ActiveStorage::Blob.all.each(&:purge) }
 
