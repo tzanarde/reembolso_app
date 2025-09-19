@@ -45,6 +45,9 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
+  config.before(:each) { ActiveStorage::Blob.all.each(&:purge) }
+  config.after(:each)  { ActiveStorage::Blob.all.each(&:purge) }
+
   config.before(:each, type: :system, js: true) do
     driven_by :selenium, using: :headless_chrome
   end
@@ -52,6 +55,19 @@ RSpec.configure do |config|
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
   ]
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   RSpec.configure do |config|
     config.include Devise::Test::IntegrationHelpers, type: :request
@@ -65,10 +81,12 @@ RSpec.configure do |config|
     end
   end
 
+  ActiveJob::Base.queue_adapter = :inline
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
