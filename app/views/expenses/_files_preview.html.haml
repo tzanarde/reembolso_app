@@ -1,0 +1,7 @@
+- if @expense&.persisted? && @expense.receipt_nf.attached?
+  #preview-image-nf.hidden.preview-image
+    = image_tag url_for(@expense.receipt_nf), class: "file-preview-large"
+  
+- if @expense&.persisted? && @expense.receipt_card.attached?
+  #preview-image-card.hidden.preview-image
+    = image_tag url_for(@expense.receipt_card), class: "file-preview-large"

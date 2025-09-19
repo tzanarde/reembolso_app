@@ -8,6 +8,9 @@ class ExpensesController < ApplicationController
   before_action :set_tags, only: %i[ create update ]
 
   def index
+    @all_tags = Tag.all
+    @all_employees = User.employees
+
     @expenses = Expense.pick_role(Expense.pick_type(params['type']), current_user)
 
     @expenses = Expense.filter_group(@expenses, params)

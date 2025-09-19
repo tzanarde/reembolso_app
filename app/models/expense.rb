@@ -177,6 +177,14 @@ class Expense < ApplicationRecord
     end
   end
 
+  def status_class
+    case status
+    when 'P' then 'pending'
+    when 'A' then 'approved'
+    when 'D' then 'declined'
+    end
+  end
+
   private
 
   def must_have_tags

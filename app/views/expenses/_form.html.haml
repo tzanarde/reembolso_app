@@ -1,5 +1,6 @@
 = form_with(model: @expense, local: true, html: { class: "container-form" }) do |f|
   = render "devise/shared/error_messages", resource: @expense
+  
   = f.number_field :amount, step: 0.01, min: 0, autofocus: true, placeholder: t("fields.expenses.amount_spent"), class: "text-field", id: "amount"
   = f.date_field :date, placeholder: t("fields.expenses.date"), class: "text-field date-field", id: "date"
 
@@ -14,21 +15,7 @@
   = f.text_field :location, placeholder: t("fields.expenses.location"), class: "text-field", id: "location"
   = f.text_area :description, rows: 10, placeholder: t("fields.expenses.description"), class: "text-area", id: "description"
 
-  .files-container
-    .file-box
-      %label{ id: "add-nf-file", class: "btn btn-primary btn-md", for: "receipt_nf_input" }= t("buttons.add_nf_file")
-      = f.file_field :receipt_nf, id: 'receipt_nf_input', class: 'file-field'
-      - if f.object.receipt_nf.attached? && f.object.persisted?
-        %img#receipt_nf_preview{ src: url_for(f.object.receipt_nf), alt: "Prévia da Nota Fiscal", class: 'file-preview clickable' }
-      - else
-        %img#receipt_nf_preview{ alt: "Prévia da Nota Fiscal", class: 'file-preview-none' }
-    .file-box
-      %label{ id: "add-card-file", class: "btn btn-primary btn-md", for: "receipt_card_input" }= t("buttons.add_card_file")
-      = f.file_field :receipt_card, id: 'receipt_card_input', class: 'file-field'
-      - if f.object.receipt_card.attached? && f.object.persisted?
-        %img#receipt_card_preview{ src: url_for(f.object.receipt_card), alt: "Prévia do Comprovante de Cartão", class: 'file-preview clickable' }
-      - else
-        %img#receipt_card_preview{ alt: "Prévia do Comprovante de Cartão", class: 'file-preview-none' }
+  = render "files_upload", f: f
   
   = f.submit button, class: "btn btn-primary btn-full-width", id: "request_expense"
 
@@ -37,10 +24,4 @@
       - @expense.tags.each_with_index do |tag, index|
         = f.text_field "tag_names_#{index + 1}", name: 'expense[tag_names][]', type: 'hidden', value: tag.description
 
-- if @expense&.persisted? && @expense.receipt_nf.attached?
-  #preview-image-nf.hidden.preview-image
-    = image_tag url_for(@expense.receipt_nf), class: "file-preview-large"
-  
-- if @expense&.persisted? && @expense.receipt_card.attached?
-  #preview-image-card.hidden.preview-image
-    = image_tag url_for(@expense.receipt_card), class: "file-preview-large"
+= render "files_preview"

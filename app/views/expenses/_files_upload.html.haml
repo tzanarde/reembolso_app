@@ -1,0 +1,15 @@
+.files-container
+  .file-box
+    %label{ id: "add-nf-file", class: "btn btn-primary btn-md", for: "receipt_nf_input" }= t("buttons.add_nf_file")
+    = f.file_field :receipt_nf, id: 'receipt_nf_input', class: 'file-field'
+    - if f.object.receipt_nf.attached? && f.object.persisted?
+      %img#receipt_nf_preview{ src: url_for(f.object.receipt_nf), alt: "Prévia da Nota Fiscal", class: 'file-preview clickable' }
+    - else
+      %img#receipt_nf_preview{ alt: "Prévia da Nota Fiscal", class: 'file-preview-none' }
+  .file-box
+    %label{ id: "add-card-file", class: "btn btn-primary btn-md", for: "receipt_card_input" }= t("buttons.add_card_file")
+    = f.file_field :receipt_card, id: 'receipt_card_input', class: 'file-field'
+    - if f.object.receipt_card.attached? && f.object.persisted?
+      %img#receipt_card_preview{ src: url_for(f.object.receipt_card), alt: "Prévia do Comprovante de Cartão", class: 'file-preview clickable' }
+    - else
+      %img#receipt_card_preview{ alt: "Prévia do Comprovante de Cartão", class: 'file-preview-none' }

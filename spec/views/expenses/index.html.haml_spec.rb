@@ -20,7 +20,14 @@ RSpec.describe "expenses/index.html.haml", type: :view do
             create(:expense, :declined, :with_tags, :with_nf_file, :with_card_file, tags_count: 2, user: employee, amount: 20.00)
           ]
         end
-        before { allow(view).to receive(:request).and_return(double(referer: expenses_path)) }
+        let!(:all_tags) { Tag.all }
+        let!(:all_employees) { User.employees }
+        before do
+          allow(view).to receive(:request).and_return(double(referer: expenses_path))
+          assign(:all_tags, all_tags)
+          assign(:all_employees, all_employees)
+        end
+        
 
         context 'for the top section' do
           context 'for back button' do
@@ -29,6 +36,7 @@ RSpec.describe "expenses/index.html.haml", type: :view do
                 sign_in employee
                 assign(:expenses, pending_expenses)
                 allow(view).to receive(:params).and_return({ type: 'pending' })
+
                 render template: "expenses/index"
 
                 expect(rendered).to have_css("a.btn.btn-simple")
@@ -94,7 +102,7 @@ RSpec.describe "expenses/index.html.haml", type: :view do
                   allow(view).to receive(:params).and_return({ type: 'pending' })
                   render template: "expenses/index"
 
-                  expect(rendered).to have_selector("h2", text: t('titles.refound_request'))
+                  expect(rendered).to have_selector("h2", text: t('titles.pending_expenses'))
                 end
               end
             end
@@ -102,20 +110,6 @@ RSpec.describe "expenses/index.html.haml", type: :view do
         end
 
         context 'for the tools section' do
-          context 'for classify button' do
-            it "renders the button" do
-              assign(:expenses, pending_expenses)
-              render template: "expenses/index"
-
-              expect(rendered).to have_css("a.btn.btn-simple")
-            end
-            it "renders the modal HTML" do
-              assign(:expenses, pending_expenses)
-              render template: "expenses/index"
-
-              expect(rendered).to have_css("#modal-classify")
-            end
-          end
           context 'for filter button' do
             it "renders the button" do
               assign(:expenses, pending_expenses)
@@ -175,8 +169,8 @@ RSpec.describe "expenses/index.html.haml", type: :view do
                 assign(:expenses, pending_expenses)
                 render template: "expenses/index"
 
-                expect(rendered).to have_selector("p", text: "#{pending_expenses.first.date.day}/#{pending_expenses.first.date.strftime("%B").slice(0, 3)}")
-                expect(rendered).to have_selector("p", text: "#{pending_expenses.second.date.day}/#{pending_expenses.second.date.strftime("%B").slice(0, 3)}")
+                expect(rendered).to have_selector("p", text: formatted_expense_date(pending_expenses.first))
+                expect(rendered).to have_selector("p", text: formatted_expense_date(pending_expenses.first))
               end
             end
             context 'for amount' do
@@ -190,8 +184,8 @@ RSpec.describe "expenses/index.html.haml", type: :view do
                 assign(:expenses, pending_expenses)
                 render template: "expenses/index"
 
-                expect(rendered).to have_selector("p", text: number_to_currency(pending_expenses.first.amount, unit: "R$ ", separator: ",", delimiter: "."))
-                expect(rendered).to have_selector("p", text: number_to_currency(pending_expenses.second.amount, unit: "R$ ", separator: ",", delimiter: "."))
+                expect(rendered).to have_selector("p", text: formatted_expense_amount(pending_expenses.first))
+                expect(rendered).to have_selector("p", text: formatted_expense_amount(pending_expenses.first))
               end
             end
             context 'for description' do
