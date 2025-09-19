@@ -50,7 +50,7 @@ class ExpensesController < ApplicationController
   end
 
   def approve
-    if @expense.can_be_approved?
+    if @expense.can_be_approved?(current_user)
       @expense.approve!
 
       redirect_to expenses_path(type: 'history')
@@ -60,7 +60,7 @@ class ExpensesController < ApplicationController
   end
 
   def decline
-    if @expense.can_be_declined?
+    if @expense.can_be_declined?(current_user)
       @expense.decline!
 
       redirect_to expenses_path(type: 'history')
