@@ -16,13 +16,13 @@
         %h2.title-text= t("titles.request_history")
 
   .container-tools
-    = link_to "#", id: "classify-button", class: "btn btn-simple" do
-      = image_tag("classify.png", alt: "Classificar")
+    -# = link_to "#", id: "classify-button", class: "btn btn-simple" do
+    -#   = image_tag("classify.png", alt: "Classificar")
 
     = link_to "#", id: "filter-button", class: "btn btn-simple" do
       = image_tag("filter.png", alt: "Filtrar")
 
-  = render 'classify'
+  -# = render 'classify'
 
   = render 'filter'
 

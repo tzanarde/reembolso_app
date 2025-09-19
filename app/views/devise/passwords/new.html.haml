@@ -3,7 +3,7 @@
 
   %h2.text-primary= t("titles.forgot_password")
 
-  .container.container-primary.container-center-md
+  .container.container-primary.container-center-sm
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "container-form" }) do |f|
       = render "devise/shared/error_messages", resource: resource
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t("fields.user.email"), class: "text-field"

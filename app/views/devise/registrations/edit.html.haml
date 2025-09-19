@@ -1,7 +1,7 @@
 .main-center
   %h2.text-primary= t("titles.edit_user")
 
-  .container.container-primary.container-center-lg
+  .container.container-primary.container-center-sm
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "container-form" }) do |f|
       = render "devise/shared/error_messages", resource: resource
       = f.text_field :name, autofocus: true, placeholder: t("fields.user.full_name"), class: "text-field"
@@ -18,5 +18,3 @@
       = f.submit t("buttons.save_edit"), class: "btn btn-primary btn-full-width", id: "edit_user"
     .divider-md
     = button_to t("buttons.delete_user"), registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary btn-full-width", id: "delete_user"
-    .divider-md
-    = link_to "<-", :back
