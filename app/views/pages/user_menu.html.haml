@@ -2,7 +2,8 @@
   %h2.text-primary= t("titles.user_menu")
   %h3.regular-text= current_user.name
   
-  .container.container-primary.container-center-md
+  .container.container-primary.container-center-sm
     = link_to t("buttons.edit_user"), 'users/edit', class: "btn btn-primary btn-full-width"
-    = button_to t("buttons.delete_user"), registration_path(:user), method: :delete, class: "btn btn-primary btn-full-width"
+    - if current_user.employee?
+      = button_to t("buttons.delete_user"), registration_path(:user), method: :delete, class: "btn btn-primary btn-full-width"
     = button_to t("buttons.logout"), destroy_user_session_path, method: :delete, class: "btn btn-primary btn-full-width"
