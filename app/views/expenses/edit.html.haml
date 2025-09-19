@@ -1,0 +1,9 @@
+.main-top
+
+  .container-top
+    = link_to request.referer, class: "btn btn-simple" do
+      = image_tag "back.png", alt: "Voltar", width: 24, height: 24
+    %h2.title-text= t("titles.add_refound_request")
+
+  .container.container-primary.container-full-screen
+    = render 'form', expense: @expense, button: t("buttons.save_edit")
