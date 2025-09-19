@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initFormJS() {
     const roleSelect = document.getElementById("role");
     const managerField = document.getElementById("manager");
 
@@ -11,4 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         managerField.selectedIndex = 0;
     });
-});
+};
+
+document.addEventListener("turbo:load", initFormJS);
+document.addEventListener("turbo:render", initFormJS);
