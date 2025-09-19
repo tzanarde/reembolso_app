@@ -30,4 +30,14 @@ class User < ApplicationRecord
 
   # Scopes
   scope :managers, -> { where(role: 'M') }
+
+  scope :employees, -> { where(role: 'E') }
+
+  def employee?
+    role == 'E'
+  end
+
+  def manager?
+    role == 'M'
+  end
 end
