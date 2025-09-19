@@ -6,7 +6,9 @@ RSpec.describe Expense, type: :model do
   describe "initializers" do
     let!(:manager) { create(:user, :manager) }
     let!(:employee) { create(:user, :employee, manager_user_id: manager.id) }
-    let!(:expense) { create(:expense, :approved, user: employee) }
+    let!(:expense) do
+      create(:expense, :with_tags, :with_nf_file, :with_card_file, tags_count: 3, user: employee)
+    end
     it 'creates an expense with the default status values' do
       expect(expense.status).to include('P')
     end
@@ -107,7 +109,9 @@ RSpec.describe Expense, type: :model do
   describe "relationships" do
     let!(:manager) { create(:user, :manager) }
     let!(:employee) { create(:user, :employee, manager_user_id: manager.id) }
-    let!(:expense) { create(:expense, :pending, user: employee) }
+    let!(:expense) do
+      create(:expense, :pending, :with_tags, :with_nf_file, :with_card_file, tags_count: 3, user: employee)
+    end
     let!(:tag) { create(:tag) }
 
     it 'allows association and access to the tags' do

@@ -39,7 +39,9 @@ RSpec.describe "devise/shared/_error_messages.html.haml", type: :view do
         end
       end
       context 'when there is no error' do
-        let!(:expense) { build(:expense, :approved, user: employee) }
+        let!(:expense) do
+          build(:expense, :pending, :with_tags, :with_nf_file, :with_card_file, tags_count: 3, user: employee)
+        end
         it "does not render the modal" do
           expense.valid?
 
