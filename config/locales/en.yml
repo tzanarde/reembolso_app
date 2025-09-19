@@ -44,6 +44,7 @@ en:
     add: "Add"
     add_nf_file: "+ Tax Receipt"
     add_card_file: "+ Card Receipt"
+    add_expense: "Add Expense"
   messages:
     refound_request_approved: "The reimbursement request has been approved!"
     refound_request_remove_confirmation: "Are you sure you want to remove the reimbursement request?"
