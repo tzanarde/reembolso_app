@@ -15,4 +15,5 @@
 
     %body
       = yield
-      = render partial: "shared/menu"
+      - unless ['sessions', 'registrations', 'passwords'].include?(controller_name) && action_name == 'new'
+        = render partial: "shared/menu"
