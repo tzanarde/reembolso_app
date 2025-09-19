@@ -1,5 +1,5 @@
 -# User sign up modal
-- if flash[:show_modal_user]
+- if flash[:show_modal_user] && current_user.employee?
   .modal-backdrop#modal-backdrop
   = render partial: "shared/modal_confirm",
            locals: { message_text: flash[:modal_message],
