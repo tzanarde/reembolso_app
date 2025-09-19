@@ -29,7 +29,7 @@ pt-BR:
     delete_user: "Excluir Usuário"
     sign_up: "Cadastrar"
     add_expense: "+"
-    deny: "Negar"
+    decline: "Recusar"
     approve: "Aprovar"
     remove: "Remover"
     edit: "Editar"
@@ -39,6 +39,7 @@ pt-BR:
     no: "Não"
     yes: "Sim"
     filter: "Filtrar"
+    reset_filter: "Limpar Filtros"
     edit_user: "Editar Usuário"
     add: "Adicionar"
     add_nf_file: "+ Cupom Fiscal"
@@ -86,6 +87,7 @@ pt-BR:
     filter: "Filtrar"
     search: "Buscar"
     back: "Voltar"
+    add: "Adicionar"
   errors:
     forms:
       user_sign_up:
@@ -124,3 +126,7 @@ pt-BR:
         description:
           blank: "Descrição é um campo obrigatório e está vazio"
           too_long: "A descrição informada é muito grande. Máximo de 80 caracteres"
+  status:
+    pending: "pendente"
+    approved: "aprovado"
+    declined: "recusado"
