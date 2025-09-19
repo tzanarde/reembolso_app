@@ -1,5 +1,6 @@
 require 'rails_helper'
 include MatchHelpers
+include FillFormHelpers
 
 RSpec.describe "New Expense", type: :system do
   context 'with an employee user related to a manager' do
@@ -15,7 +16,9 @@ RSpec.describe "New Expense", type: :system do
                                 date: Date.today,
                                 amount: 10.00,
                                 location: 'Local da despesa',
-                                tags: 'tag1')
+                                tag_names: ['tag1', 'tag2'],
+                                nf_file: "spec/fixtures/files/receipt_nf.png",
+                                card_file: "spec/fixtures/files/receipt_card.png")
 
           click_button "request_expense"
 
@@ -31,7 +34,9 @@ RSpec.describe "New Expense", type: :system do
               fill_form_new_expense(description: 'Descrição da despesa',
                                     date: Date.today,
                                     location: 'Local da despesa',
-                                    tags: 'tag1')
+                                    tag_names: ['tag1', 'tag2'],
+                                    nf_file: "spec/fixtures/files/receipt_nf.png",
+                                    card_file: "spec/fixtures/files/receipt_card.png")
 
               click_button "request_expense"
 
@@ -47,7 +52,9 @@ RSpec.describe "New Expense", type: :system do
               fill_form_new_expense(description: 'Descrição da despesa',
                                     amount: 10.00,
                                     location: 'Local da despesa',
-                                    tags: 'tag1')
+                                    tag_names: ['tag1', 'tag2'],
+                                    nf_file: "spec/fixtures/files/receipt_nf.png",
+                                    card_file: "spec/fixtures/files/receipt_card.png")
 
               click_button "request_expense"
 
@@ -55,22 +62,6 @@ RSpec.describe "New Expense", type: :system do
             end
           end
         end
-        # context 'for the tags field' do
-        #   context 'when the tags is blank' do
-        #     it "does not allow a user to create an expense" do
-        #       visit '/expenses/new'
-
-        #       fill_form_new_expense(description: 'Descrição da despesa',
-        #                             date: Date.today,
-        #                             amount: 10.00,
-        #                             location: 'Local da despesa')
-
-        #       click_button "request_expense"
-
-        #       expect(page).to have_content(I18n.t("errors.forms.expenses.tags.blank"))
-        #     end
-        #   end
-        # end
         context 'for the location field' do
           context 'when the location is blank' do
             it "does not allow a user to create an expense" do
@@ -79,7 +70,9 @@ RSpec.describe "New Expense", type: :system do
               fill_form_new_expense(description: 'Descrição da despesa',
                                     date: Date.today,
                                     amount: 10.00,
-                                    tags: 'tag1')
+                                    tag_names: ['tag1', 'tag2'],
+                                    nf_file: "spec/fixtures/files/receipt_nf.png",
+                                    card_file: "spec/fixtures/files/receipt_card.png")
 
               click_button "request_expense"
 
@@ -94,7 +87,9 @@ RSpec.describe "New Expense", type: :system do
                                     date: Date.today,
                                     amount: 10.00,
                                     location: 'aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeef',
-                                    tags: 'tag1')
+                                    tag_names: ['tag1', 'tag2'],
+                                    nf_file: "spec/fixtures/files/receipt_nf.png",
+                                    card_file: "spec/fixtures/files/receipt_card.png")
 
               click_button "request_expense"
 
@@ -110,7 +105,9 @@ RSpec.describe "New Expense", type: :system do
               fill_form_new_expense(date: Date.today,
                                     amount: 10.00,
                                     location: 'Local da despesa',
-                                    tags: 'tag1')
+                                    tag_names: ['tag1', 'tag2'],
+                                    nf_file: "spec/fixtures/files/receipt_nf.png",
+                                    card_file: "spec/fixtures/files/receipt_card.png")
 
               click_button "request_expense"
 
@@ -125,11 +122,69 @@ RSpec.describe "New Expense", type: :system do
                                     date: Date.today,
                                     amount: 10.00,
                                     location: 'Local da despesa',
-                                    tags: 'tag1')
+                                    tag_names: ['tag1', 'tag2'],
+                                    nf_file: "spec/fixtures/files/receipt_nf.png",
+                                    card_file: "spec/fixtures/files/receipt_card.png")
 
               click_button "request_expense"
 
               expect(page).to have_content(I18n.t("errors.forms.expenses.description.too_long"))
+            end
+          end
+        end
+        context 'for the tags field' do
+          context 'when the tags is blank' do
+            it "does not allow a user to create an expense" do
+              visit '/expenses/new'
+
+              fill_form_new_expense(description: 'Descrição da despesa',
+                                    date: Date.today,
+                                    amount: 10.00,
+                                    location: 'Local da despesa',
+                                    nf_file: "spec/fixtures/files/receipt_nf.png",
+                                    card_file: "spec/fixtures/files/receipt_card.png")
+
+              click_button "request_expense"
+
+              expect(page).to have_content(I18n.t("errors.forms.expenses.tags.blank"))
+            end
+          end
+        end
+        context 'for the files upload' do
+          context 'for the receipt nf file' do
+            context 'when the file was not uploaded' do
+              it "does not allow a user to create an expense" do
+                visit '/expenses/new'
+
+                fill_form_new_expense(description: 'Descrição da despesa',
+                                      date: Date.today,
+                                      amount: 10.00,
+                                      location: 'Local da despesa',
+                                      tag_names: ['tag1', 'tag2'],
+                                      card_file: "spec/fixtures/files/receipt_card.png")
+
+                click_button "request_expense"
+
+                expect(page).to have_content(I18n.t("errors.forms.expenses.receipt_nf.blank"))
+              end
+            end
+          end
+          context 'for the receipt card file' do
+            context 'when the file was not uploaded' do
+              it "does not allow a user to create an expense" do
+                visit '/expenses/new'
+
+                fill_form_new_expense(description: 'Descrição da despesa',
+                                      date: Date.today,
+                                      amount: 10.00,
+                                      location: 'Local da despesa',
+                                      tag_names: ['tag1', 'tag2'],
+                                      nf_file: "spec/fixtures/files/receipt_nf.png",)
+
+                click_button "request_expense"
+
+                expect(page).to have_content(I18n.t("errors.forms.expenses.receipt_card.blank"))
+              end
             end
           end
         end
