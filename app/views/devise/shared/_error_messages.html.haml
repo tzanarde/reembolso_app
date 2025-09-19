@@ -8,7 +8,7 @@
                      button_text: t("buttons.confirm"),
                      button_id: "confirm_button" }
 
-- else
+- elsif params[:logout] != 'true'
 
   - if flash[:alert] == t('devise.failure.unauthenticated')
     .modal-backdrop#modal-backdrop
