@@ -1,5 +1,6 @@
 require "rails_helper"
 include MatchHelpers
+include FillFormHelpers
 
 RSpec.describe "Sign up", type: :system do
   context 'for both employee and manager registrations' do

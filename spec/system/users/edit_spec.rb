@@ -1,5 +1,6 @@
 require "rails_helper"
 include MatchHelpers
+include FillFormHelpers
 
 RSpec.describe "Edit User Registration", type: :system do
   let!(:manager) { create(:user, :manager) }

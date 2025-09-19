@@ -1,5 +1,6 @@
 require "rails_helper"
 include MatchHelpers
+include FillFormHelpers
 
 RSpec.describe "Forgot Password", type: :system do
   before do

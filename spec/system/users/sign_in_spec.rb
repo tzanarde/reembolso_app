@@ -1,5 +1,6 @@
 require "rails_helper"
 include MatchHelpers
+include FillFormHelpers
 
 RSpec.describe "Sign in", type: :system do
   context 'when the user is logged out' do
