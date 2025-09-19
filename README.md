@@ -9,12 +9,12 @@ Projeto **Reembolso APP** para o desafio técnico da empresa [Caiena](https://ww
 
 ## Indíce
 - [Instalação](#instalação)
+- [Testes](#testes)
 - [Autenticação](#autenticação)
 - [Modelos](#endpoints)
     - [Users](#users)
     - [Expenses](#expenses)
     - [Tags](#tags)
-- [Testes](#testes)
 
 ---
 
@@ -33,6 +33,16 @@ Com isso a API já poderá ser acessada pela sua URL padrão:
 
 ```sh
 localhost:3000
+```
+
+---
+
+## Testes
+
+Para rodar os testes, utilizar o comando abaixo:
+
+```sh
+docker compose exec web rspec
 ```
 
 ---
@@ -100,12 +110,3 @@ Modelagem de tags com os seguinte campos:
 ### Esquema da Modelagem
 ![Minha foto](app/assets/images/model_scheme.png)
 
----
-
-## Testes
-
-Para rodar os testes, utilizar o comando abaixo:
-
-```sh
-docker compose exec web bundle exec rspec
-```
