@@ -76,12 +76,40 @@ class Expense < ApplicationRecord
     where("UPPER(location) LIKE ?", "%#{location.upcase}%") if location.present?
   end
 
+  scope :by_status, ->(status) do
+    where(status: status) if status.present?
+  end
+
   scope :by_amount, ->(min_amount, max_amount) do
     where("amount >= ? AND amount <= ?", min_amount, max_amount) if min_amount.present? and max_amount.present?
   end
 
   scope :by_tags, ->(tags) do
     joins(:tags).where(tags: { description: tags }).distinct if tags.present?
+  end
+
+  scope :pending_expenses_by_employee, ->(employee) do
+    where(user: employee, status: 'P')
+  end
+
+  scope :todays_pending_expenses_by_employee, ->(employee) do
+    where(user: employee, status: 'P', date: Date.today)
+  end
+
+  scope :week_pending_expenses_by_employee, ->(employee) do
+    where(user: employee, status: 'P', date: Date.today.beginning_of_week(:monday)..Date.today.end_of_week(:sunday))
+  end
+
+  scope :pending_expenses_by_manager, ->(manager) do
+    joins(:user).where(users: { manager_user_id: manager.id }, status: 'P')
+  end
+
+  scope :todays_pending_expenses_by_manager, ->(manager) do
+    joins(:user).where(users: { manager_user_id: manager.id }, status: 'P', date: Date.today)
+  end
+
+  scope :week_pending_expenses_by_manager, ->(manager) do
+    joins(:user).where(users: { manager_user_id: manager.id }, status: 'P', date: Date.today.beginning_of_week(:monday)..Date.today.end_of_week(:sunday))
   end
 
   # Methods
@@ -93,6 +121,7 @@ class Expense < ApplicationRecord
     expenses = expenses.by_location(params[:location]) if params[:location].present?
     expenses = expenses.by_amount(params[:min_amount], params[:max_amount]) if params[:min_amount].present? && params[:max_amount].present?
     expenses = expenses.by_tags(params[:tags]) if params[:tags].present? && params[:tags].reject(&:blank?).any?
+    expenses = expenses.by_status(params[:status]) if params[:status].present?
     expenses
   end
 
@@ -116,11 +145,11 @@ class Expense < ApplicationRecord
     end
   end
 
-  def can_be_approved?
+  def can_be_approved?(user)
     user.manager? && self.status == 'P'
   end
 
-  def can_be_declined?
+  def can_be_declined?(user)
     user.manager? && self.status == 'P'
   end
 
