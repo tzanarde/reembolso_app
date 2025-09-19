@@ -108,5 +108,5 @@ Modelagem de tags com os seguinte campos:
 - **Descrição**: description
 
 ### Esquema da Modelagem
-![Minha foto](app/assets/images/model_scheme.png)
+![model-schema](app/assets/images/model_scheme.png)
 
